@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-07.
+// Created by astrid on 2025-04-07.
 //
 
 #ifndef SESSION_H
