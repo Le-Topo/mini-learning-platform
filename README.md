@@ -14,3 +14,9 @@ to create and manage their own courses and lessons.
   ```bash
   sudo apt-get install libmysqlclient-dev
   ```
+
+- `libsdl2-dev`: This library is used for graphics and window management. 
+  You can install it using pip:
+  ```bash
+  sudo apt-get install libsdl2-dev
+  ```
