@@ -24,3 +24,14 @@ struct Course {
 typedef struct Course Course;
 
 #endif //COURSE_H
+  #include <stdio.h>
+#include <stdlib.h>
+
+void createcourse(){
+
+  struct u;
+  printf("n\ Enter a title : ");
+  
+
+
+}

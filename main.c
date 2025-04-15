@@ -39,3 +39,19 @@ int main(int argc, char *argv[]) {
 
     return EXIT_SUCCESS;
 }
+
+// create a function which allow a teacher to logn in , sign in , create and search a course
+UserRole u;
+printf("\n----------------Wecome--------------------\n");
+
+printf("\nEnter your user role\n :")
+printf("\n1. Learner\n2. Instrucror\n99. Admin  ");
+printf("Your user role: ");
+scanf("%d", &u);
+
+if (choice == 2){
+    displayMenu();
+}
+
+
+
