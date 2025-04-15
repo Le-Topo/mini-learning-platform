@@ -5,7 +5,7 @@
 #ifndef USER_H
 #define USER_H
 
-#include "utils/enums/user-role.h"
+#include "../utils/enums/user-role.h"
 
 struct User {
   long id;

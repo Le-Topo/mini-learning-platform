@@ -23,17 +23,18 @@ OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
 INC_PATHS = $(shell find $(INC_DIR) -type d)
 INCLUDES = $(addprefix -I, $(INC_PATHS))
 
-# Compiler and flags
+# Include PDCurses headers
 SRC_FILES = $(shell find $(SRC_DIR) -name '*.c')
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
 INC_PATHS = $(shell find $(INC_DIR) -type d)
 INCLUDES = $(addprefix -I, $(INC_PATHS)) -I$(PDC_INCLUDE_DIR)
-CFLAGS = -Wall -Wextra $(INCLUDES)
-LDFLAGS = -L$(PDC_LIB_DIR) -l:pdcurses.a -lncurses -lSDL2 -lmysqlclient
 
-#CC = gcc
-#CFLAGS = -Wall -Wextra $(INCLUDES)
-#LDFLAGS = -lncurses -lmysqlclient `mysql_config --cflags --libs`
+# Compiler and flags
+CC = gcc -g
+CFLAGS = -Wall -Wextra $(INCLUDES)
+#LDFLAGS = -I$(PDC_LIB_DIR) -Ilib/pdcurses -Llib/pdcurses -l:pdcurses.a -lSDL2 -lSDL2_ttf -lmysqlclient
+LDFLAGS = -I$(PDC_LIB_DIR) -lncurses -lmysqlclient
+
 
 # Main compilation command
 all: $(TARGET)
@@ -42,6 +43,7 @@ $(TARGET): $(OBJ_FILES)
 	@mkdir -p $(dir $@)
 	$(CC) $(OBJ_FILES) -o $@ $(LDFLAGS)
 	@echo "✅ Compilation finished successfully. Executable: $(TARGET)"
+	./$(TARGET)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -58,7 +60,7 @@ check-pdc:
 dependencies:
 	@echo "📦 Installing system dependencies..."
 	sudo apt update
-	sudo apt install -y libmysqlclient-dev libncurses-dev libsdl2-dev git make gcc
+	sudo apt install -y libmysqlclient-dev libsdl2-dev libsdl2-ttf-dev git make gcc
 	@echo "✅ System dependencies installed."
 	$(MAKE) pdcurses-install
 
@@ -70,6 +72,35 @@ pdcurses-install:
 	@echo "🔧 Downloading and compiling PDCurses (SDL2)..."
 	@if [ -d $(PDC_TMP_DIR) ]; then rm -rf $(PDC_TMP_DIR); fi
 	git clone --depth=1 $(PDC_REPO) $(PDC_TMP_DIR)
+
+	@echo "🧩 Patching SDL2 : HiDPI, fullscreen mode and font size..."
+	# 1. Activate HiDPI
+	@sed -i '/SDL_Event event;/a SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");' \
+		$(PDC_TMP_DIR)/sdl2/pdcscrn.c
+#
+#	# 2. Force the fullscreen and HiDPI modes
+	@sed -i '/pdc_window = SDL_CreateWindow("PDCurses",/c\pdc_window = SDL_CreateWindow("Mini Learning Platform",' \
+		$(PDC_TMP_DIR)/sdl2/pdcscrn.c
+#
+	@sed -i '/pdc_swidth, pdc_sheight, SDL_WINDOW_RESIZABLE);/c\1920, 1080, SDL_WINDOW_ALLOW_HIGHDPI);' \
+		$(PDC_TMP_DIR)/sdl2/pdcscrn.c
+
+#	# 3. Set the font size
+	@sed -i 's|#   define PDC_FONT_PATH "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"|#   define PDC_FONT_PATH "assets/fonts/JetBrainsMono-Regular.ttf"|' \
+		$(PDC_TMP_DIR)/sdl2/pdcscrn.c
+#
+	@sed -i 's|17;|24;|' \
+		$(PDC_TMP_DIR)/sdl2/pdcscrn.c
+
+	@sed -i '/#include <curspriv.h>/a\#include <SDL_ttf.h>' \
+		$(PDC_TMP_DIR)/sdl2/pdcsdl.h
+
+	@sed -i '/#include <curspriv.h>/a\#define PDC_WIDE' \
+		$(PDC_TMP_DIR)/sdl2/pdcsdl.h
+
+
+
+	@echo "🛠️  PDCurses compilation..."
 	cd $(PDC_TMP_DIR)/sdl2 && make
 	mkdir -p $(PDC_LIB_DIR) $(PDC_INCLUDE_DIR)
 	cp $(PDC_TMP_DIR)/sdl2/pdcurses.a $(PDC_LIB_DIR)/
@@ -77,6 +108,9 @@ pdcurses-install:
 	cp $(PDC_TMP_DIR)/panel.h $(PDC_INCLUDE_DIR)/
 	#cp $(PDC_TMP_DIR)/pdcurses.h $(PDC_INCLUDE_DIR)/
 	rm -rf $(PDC_TMP_DIR)
+
+	@sed -i '/#include <curses.h>/c\#include "curses.h"' \
+		$(PDC_LIB_DIR)/include/panel.h
 	@echo "✅ PDCurses (SDL2) has been installed successfully."
 
 # === Clean up build artifacts ===

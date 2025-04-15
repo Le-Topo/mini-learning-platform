@@ -11,6 +11,7 @@
 #include "logger.h"
 
 void log_message(const char *format, ...) {
+#ifdef LOGGER_ENABLED
   FILE *log_file = fopen("app.log", "a");
 
   if (!log_file) {
@@ -33,4 +34,6 @@ void log_message(const char *format, ...) {
 
   fprintf(log_file, "\n");
   fclose(log_file);
+#endif
+
 }

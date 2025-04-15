@@ -20,3 +20,9 @@ to create and manage their own courses and lessons.
   ```bash
   sudo apt-get install libsdl2-dev
   ```
+  
+- `libsdl2-ttf-dev`: This library is used for rendering fonts in SDL. 
+  You can install it using pip:
+  ```bash
+  sudo apt-get install libsdl2-ttf-dev
+  ```
