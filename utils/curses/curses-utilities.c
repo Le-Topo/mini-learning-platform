@@ -77,3 +77,98 @@ void draw_rectangle_with_text(WINDOW *win, int *x, int *y, const char *text, int
     *y += height; // Move the y position down for the next rectangle
     *x += width;
 }
+
+void handle_form_driver(FORM *form, int ch, bool consider_h_keys)
+{
+    if (ch == KEY_DOWN || (consider_h_keys && ch == KEY_RIGHT))
+    {
+        form_driver(form, REQ_NEXT_FIELD);
+        form_driver(form, REQ_END_LINE);
+    }
+    else if (ch == KEY_UP || (consider_h_keys && ch == KEY_LEFT))
+    {
+        form_driver(form, REQ_PREV_FIELD);
+        form_driver(form, REQ_END_LINE);
+    }
+    else if (ch == KEY_BACKSPACE || ch == KEY_DC || ch == 127) {
+        form_driver(form, REQ_DEL_PREV);
+    }
+    else
+    {
+        form_driver(form, ch);
+    }
+}
+
+void free_form_and_fields(FORM *form, FIELD **fields, int num_fields)
+{
+    // Unpost form and free the memory
+    unpost_form(form);
+    free_form(form);
+
+    for (int i = 0; i < num_fields; i++) {
+        if (fields[i] != NULL) {
+            free_field(fields[i]);
+        }
+    }
+    free(fields);
+}
+
+FIELD** setup_fields(FieldProps *fields_props, int num_fields)
+{
+    FIELD **tmp = malloc((num_fields + 1) * sizeof(FIELD*));
+    for (int i = 0; i < num_fields; i++)
+    {
+        int labelWidth = 0;
+        if (fields_props[i].inlined_label)
+        {
+            labelWidth = (int) strlen(fields_props[i].label);
+        }
+
+        int labelX = fields_props[i].startx;
+        int labelY = fields_props[i].starty - 1;
+        if (fields_props[i].inlined_label)
+        {
+            labelX += fields_props[i].width + 1;
+            labelY = fields_props[i].starty;
+        }
+        mvwprintw(stdscr, labelY, labelX, "%s", fields_props[i].label);
+
+        tmp[i] = new_field(fields_props[i].height, fields_props[i].width, fields_props[i].starty, labelWidth + fields_props[i].startx, 0, 0);
+        set_field_back(tmp[i], A_UNDERLINE); // Print a line for the option
+        field_opts_off(tmp[i], O_AUTOSKIP); // Don't go to next field when this field is filled up
+        set_field_buffer(tmp[i], 1, fields_props[i].label);
+    }
+    tmp[num_fields] = NULL;
+
+    return tmp;
+    // form = new_form(fields);
+    // post_form(form);
+
+    // for (int i = 0; i < num_fields; i++)
+    // {
+    //     int labelX = fields_props[i].startx;
+    //     int labelY = fields_props[i].starty - 1;
+    //     if (fields_props[i].inlined_label)
+    //     {
+    //         labelX += fields_props[i].width + 1;
+    //         labelY = fields_props[i].starty;
+    //     }
+    //     mvwprintw(stdscr, labelY, labelX, "%s", fields_props[i].label);
+    // }
+
+}
+
+void attach_labels_to_fields(FIELD **fields, FieldProps *fields_props, int num_fields)
+{
+    for (int i = 0; i < num_fields; i++)
+    {
+        int labelX = fields_props[i].startx;
+        int labelY = fields_props[i].starty - 1;
+        if (fields_props[i].inlined_label)
+        {
+            labelX += fields_props[i].width + 1;
+            labelY = fields_props[i].starty;
+        }
+        mvwprintw(stdscr, labelY, labelX, "%s", fields_props[i].label);
+    }
+}

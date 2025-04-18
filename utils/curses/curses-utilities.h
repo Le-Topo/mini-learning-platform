@@ -9,6 +9,8 @@
 #include <curses.h>
 #include <string.h>
 #include <stdbool.h>
+#include <form.h>
+#include <stdlib.h>
 
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -19,22 +21,20 @@
 #define NLINES 10
 #define NCOLS 60
 
-typedef struct _win_border_struct {
-	chtype 	ls, rs, ts, bs,
-	 	tl, tr, bl, br;
-}WIN_BORDER;
+#define BLANK_LINE "                                                                 "
+#define LONG_BLANK_LINE "                                                                                                        "
 
-typedef struct _WIN_struct {
+#define EXIT_KEY (KEY_F(12))
+#define BACK_KEY (KEY_F(11))
 
-	int startx, starty;
-	int height, width;
-	WIN_BORDER border;
-}WIN;
-
-struct _PANEL_DATA {
-    bool hide;	/* true if panel is hidden */
-};
-typedef struct _PANEL_DATA PANEL_DATA;
+typedef struct FieldProps {
+    int height;
+    int width;
+    int starty;
+    int startx;
+    char *label;
+    bool inlined_label;
+} FieldProps;
 
 // This function is used to create a new panel/window
 void init_wins(WINDOW **wins, int n);
@@ -48,5 +48,14 @@ void print_in_hmiddle_of_window(WINDOW *win, const int line, const int win_cols,
 void draw_rectangle(WINDOW *win, int x, int y, int width, int height);
 
 void draw_rectangle_with_text(WINDOW *win, int *x, int *y, const char *text, int hpadding, int vpadding, bool should_print_in_whmiddle, int win_cols);
+
+// param consider_h_keys is used to determine if the function should consider the horizontal keys (left and right arrows) or not
+void handle_form_driver(FORM *form, int ch, bool consider_h_keys);
+
+void free_form_and_fields(FORM *form, FIELD **fields, int num_fields);
+
+FIELD** setup_fields(FieldProps *fields_props, int num_fields);
+
+void attach_labels_to_fields(FIELD **fields, FieldProps *fields_props, int num_fields);
 
 #endif //NCURSES_UTILITIES_H

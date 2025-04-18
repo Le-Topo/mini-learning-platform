@@ -64,3 +64,45 @@ char* get_user_role_description(UserRole user_role)
             return "Inconnu";
     }
 }
+
+char* trim_whitespaces(char *str)
+{
+    char *end;
+
+    // trim leading space
+    while(isspace(*str))
+        str++;
+
+    if(*str == 0) // all spaces?
+        return str;
+
+    // trim trailing space
+    end = str + strnlen(str, 128) - 1;
+
+    while(end > str && isspace(*end))
+        end--;
+
+    // write new null terminator
+    *(end+1) = '\0';
+
+    return str;
+}
+
+// This function is used to hash a string using a simple hash function
+char* hash_string(char *str)
+{
+    unsigned long hash = 5381;
+    int c;
+
+    while ((c = *str++)) {
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
+
+    // Convert the hash to a string
+    char *hash_str = malloc(21); // Enough to hold a 64-bit integer as a string
+    if (hash_str) {
+        snprintf(hash_str, 21, "%lu", hash);
+    }
+
+    return hash_str;
+}

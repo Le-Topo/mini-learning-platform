@@ -33,7 +33,7 @@ INCLUDES = $(addprefix -I, $(INC_PATHS)) -I$(PDC_INCLUDE_DIR)
 CC = gcc -g
 CFLAGS = -Wall -Wextra $(INCLUDES)
 #LDFLAGS = -I$(PDC_LIB_DIR) -Ilib/pdcurses -Llib/pdcurses -l:pdcurses.a -lSDL2 -lSDL2_ttf -lmysqlclient
-LDFLAGS = -I$(PDC_LIB_DIR) -lncurses -lmysqlclient
+LDFLAGS = -I$(PDC_LIB_DIR) -lncurses -lform -lmysqlclient `mysql_config --cflags --libs`
 
 
 # Main compilation command
@@ -62,7 +62,7 @@ dependencies:
 	sudo apt update
 	sudo apt install -y libmysqlclient-dev libsdl2-dev libsdl2-ttf-dev git make gcc
 	@echo "✅ System dependencies installed."
-	$(MAKE) pdcurses-install
+	#$(MAKE) pdcurses-install
 
 # === Install only PDCurses SDL2 ===
 PDC_TMP_DIR := tmp/pdcurses

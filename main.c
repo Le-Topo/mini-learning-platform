@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <mysql/mysql.h>
+#include "routes/routes.h"
+#include <stdbool.h>
+#include <curses.h>
 #include "utils/database/db-connection.h"
 // #include "lib/pdcurses/include/curses.h"
 // #include "lib/pdcurses/include/panel.h"
 #include "views/welcome/welcome.view.h"
 #include "views/auth/register/register.view.h"
+#include "views/auth/login/login.view.h"
+#include "views/instructor/dashboard/dashboard.view.h"
 #include "utils/curses/curses-utilities.h"
-#include "routes/routes.h"
-#include <stdbool.h>
-#include <curses.h>
 
 Route* add_route_to_execution_stack(Route *stack, const Route route, int *currentStackSize, int *currentRouteIndex) {
 
@@ -49,7 +51,7 @@ int main(int argc, char *argv[]) {
 	int stackSize = 0, currentRouteIndex = 0;
 	bool canExit = false;
 
-	executionStack = add_route_to_execution_stack(executionStack, WELCOME, &stackSize, &currentRouteIndex);
+	executionStack = add_route_to_execution_stack(executionStack, INSTRUCTOR_HOME, &stackSize, &currentRouteIndex);
 
 	/* Initialize curses */
 	initscr();
@@ -64,9 +66,8 @@ int main(int argc, char *argv[]) {
 	init_pair(5, COLOR_YELLOW, COLOR_BLACK);
 
     // Get the MySQL connection
-    // MYSQL *conn = get_mysql_connection();
+    MYSQL *conn = get_mysql_connection();
 
-	int i = 1;
 	while (!canExit) {
 		Route nextRoute = EXIT;
 		switch (executionStack[currentRouteIndex]) {
@@ -74,15 +75,32 @@ int main(int argc, char *argv[]) {
 				nextRoute = render_register_view(INSTRUCTOR);
 				break;
 			case INSTRUCTOR_LOGIN:
-                nextRoute = EXIT;
+                nextRoute = render_login_view(INSTRUCTOR);
                 break;
+			case INSTRUCTOR_HOME:
+				nextRoute = render_instructor_dashboard_view();
+				break;
+
 			case LEARNER_REGISTER:
-				nextRoute = EXIT;
+				nextRoute = render_register_view(LEARNER);
+				break;
+			case LEARNER_LOGIN:
+				nextRoute = render_login_view(LEARNER);
+				break;
 			default:
 				nextRoute = render_welcome_view();
 		}
 
-		executionStack = add_route_to_execution_stack(executionStack, nextRoute, &stackSize, &currentRouteIndex);
+		if (nextRoute == BACK) {
+			if (currentRouteIndex > 0) {
+				currentRouteIndex--;
+				nextRoute = executionStack[currentRouteIndex];
+			} else {
+				nextRoute = EXIT;
+			}
+		} else {
+			executionStack = add_route_to_execution_stack(executionStack, nextRoute, &stackSize, &currentRouteIndex);
+		}
 		canExit = nextRoute == EXIT;
 	}
 
@@ -90,7 +108,7 @@ int main(int argc, char *argv[]) {
 
 	endwin();
 
-    // mysql_close(conn);
+    mysql_close(conn);
 
     return EXIT_SUCCESS;
 }
