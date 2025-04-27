@@ -20,7 +20,7 @@ Route render_welcome_view()
   char *currentQuote = get_random_motivational_quote(get_user_role_from_tab(currentTab));
   bool shouldRefreshScreen = true;
 
-  Route nextRoute = EXIT;
+  Route nextRoute = ROUTE_EXIT;
 
   cbreak();
   noecho();
@@ -106,22 +106,22 @@ Route render_welcome_view()
     switch (ctrl) {
       case '1':
         if (currentTab == 0) {
-          nextRoute = LEARNER_LOGIN;
+          nextRoute = ROUTE_LEARNER_LOGIN;
         } else if (currentTab == 1) {
-          nextRoute = INSTRUCTOR_LOGIN;
+          nextRoute = ROUTE_INSTRUCTOR_LOGIN;
         } else {
-          nextRoute = ADMIN_LOGIN;
+          nextRoute = ROUTE_ADMIN_LOGIN;
         }
         break;
       case '2':
         if (currentTab == 0) {
-          nextRoute = LEARNER_REGISTER;
+          nextRoute = ROUTE_LEARNER_REGISTER;
         } else if (currentTab == 1) {
-          nextRoute = INSTRUCTOR_REGISTER;
+          nextRoute = ROUTE_INSTRUCTOR_REGISTER;
         }
         break;
       default:
-        nextRoute = EXIT;
+        nextRoute = ROUTE_EXIT;
     }
   }
 

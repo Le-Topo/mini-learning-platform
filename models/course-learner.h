@@ -5,7 +5,7 @@
 #ifndef COURSE_LEARNER_H
 #define COURSE_LEARNER_H
 
-#include "utils/enums/course-learning-status.h"
+#include "../utils/enums/course-learning-status.h"
 
 // This struct represents the relationship between a learner and a course.
 struct CourseLearner {

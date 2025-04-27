@@ -19,4 +19,6 @@ char* trim_whitespaces(char *str);
 
 char* hash_string(char *str);
 
+void free_linked_list(void *list, size_t next_offset);
+
 #endif //FUNCTIONS_H

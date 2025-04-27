@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <form.h>
 #include <stdlib.h>
+#include "../../routes/routes.h"
 
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
@@ -27,6 +28,10 @@
 #define EXIT_KEY (KEY_F(12))
 #define BACK_KEY (KEY_F(11))
 
+#define DEFAULT_INPUT_WIDTH 33
+#define DEFAULT_INPUT_HEIGHT 1
+#define DEFAULT_INPUTS_SPACING_IN_A_ROW 4
+
 typedef struct FieldProps {
     int height;
     int width;
@@ -35,6 +40,12 @@ typedef struct FieldProps {
     char *label;
     bool inlined_label;
 } FieldProps;
+
+typedef struct FieldsGroup {
+    int fields_count;
+    FieldProps *fields_props;
+    FIELD **fields;
+} FieldsGroup;
 
 // This function is used to create a new panel/window
 void init_wins(WINDOW **wins, int n);
@@ -52,10 +63,17 @@ void draw_rectangle_with_text(WINDOW *win, int *x, int *y, const char *text, int
 // param consider_h_keys is used to determine if the function should consider the horizontal keys (left and right arrows) or not
 void handle_form_driver(FORM *form, int ch, bool consider_h_keys);
 
+void free_fields(FIELD **fields, int num_fields);
+
 void free_form_and_fields(FORM *form, FIELD **fields, int num_fields);
+
+void free_form_and_fields_groups(FORM *form, FieldsGroup *fields_groups, int num_fields_groups);
 
 FIELD** setup_fields(FieldProps *fields_props, int num_fields);
 
 void attach_labels_to_fields(FIELD **fields, FieldProps *fields_props, int num_fields);
+
+// This function is used to set the appropriate route based on the pressed key (F11 for back, F12 for exit)
+void set_route_from_exit_keys(int pressed_key, Route *route);
 
 #endif //NCURSES_UTILITIES_H

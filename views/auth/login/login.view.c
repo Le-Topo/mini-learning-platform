@@ -5,7 +5,7 @@
 #include "./login.view.h"
 
 #define FIELDS_COUNT 2
-#define SUBMIT_KEY (KEY_F(1))
+#define SUBMIT_KEY (KEY_F(10))
 
 Route render_login_view(UserRole user_role) {
     cbreak();
@@ -17,7 +17,7 @@ Route render_login_view(UserRole user_role) {
     int ctrl = 0;
     char pageTitle[30];
     sprintf(pageTitle, "Connexion (%s)", get_user_role_description(user_role));
-    Route nextRoute = EXIT;
+    Route nextRoute = ROUTE_EXIT;
     bool shouldRefreshScreen = true;
 
     FORM *loginForm = NULL;
@@ -42,7 +42,7 @@ Route render_login_view(UserRole user_role) {
     draw_rectangle(stdscr, 30, 4, 78, 16);
 
     int submitButtonX = 3, submitButtonY = 16;
-    draw_rectangle_with_text(stdscr, &submitButtonX, &submitButtonY, "[F1] Soumettre", 2, 1, true, MAX_WIN_COLS);
+    draw_rectangle_with_text(stdscr, &submitButtonX, &submitButtonY, "[F10] Soumettre", 2, 1, true, MAX_WIN_COLS);
 
     refresh();
 
@@ -94,7 +94,7 @@ Route render_login_view(UserRole user_role) {
     free_form_and_fields(loginForm, fields, FIELDS_COUNT);
 
     if (ctrl == BACK_KEY) {
-        nextRoute = BACK;
+        nextRoute = ROUTE_BACK;
     }
 
     return nextRoute;

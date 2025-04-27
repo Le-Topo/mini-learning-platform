@@ -11,37 +11,15 @@
 #include "views/auth/login/login.view.h"
 #include "views/instructor/dashboard/dashboard.view.h"
 #include "utils/curses/curses-utilities.h"
+#include "views/instructor/new-course/new-course.view.h"
+#include "views/learner/dashboard/dashboard.view.h"
+#include "views/learner/courses/courses.view.h"
 
-Route* add_route_to_execution_stack(Route *stack, const Route route, int *currentStackSize, int *currentRouteIndex) {
-
-	if (currentStackSize == NULL) {
-		log_message("Error: currentStackSize is NULL");
-		exit(EXIT_FAILURE);
-	}
-
-	if (*currentStackSize == 0) {
-		stack = (Route*)malloc(sizeof(Route));
-		if (stack == NULL) {
-			log_message("Error allocating memory for execution stack");
-			exit(EXIT_FAILURE);
-		}
-	} else {
-		Route *tmp = realloc(stack, sizeof(Route) * (*currentStackSize + 1));
-		if (tmp == NULL) {
-            log_message("Error reallocating memory for execution stack");
-            exit(EXIT_FAILURE);
-        }
-		stack = tmp;
-	}
-
-	stack[*currentStackSize] = route;
-
-	if (currentRouteIndex != NULL) {
-		*currentRouteIndex = *currentStackSize;
-	}
-
-	(*currentStackSize)++;
-	return stack;
+void process_user_logout(Route *stack, int *currentStackSize, int *currentRouteIndex) {
+	free(stack);
+	stack = NULL;
+	*currentStackSize = 0;
+	*currentRouteIndex = 0;
 }
 
 int main(int argc, char *argv[]) {
@@ -51,7 +29,7 @@ int main(int argc, char *argv[]) {
 	int stackSize = 0, currentRouteIndex = 0;
 	bool canExit = false;
 
-	executionStack = add_route_to_execution_stack(executionStack, INSTRUCTOR_HOME, &stackSize, &currentRouteIndex);
+	executionStack = add_route_to_execution_stack(executionStack, ROUTE_LEARNER_COURSES, &stackSize, &currentRouteIndex);
 
 	/* Initialize curses */
 	initscr();
@@ -64,51 +42,67 @@ int main(int argc, char *argv[]) {
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
 	init_pair(4, COLOR_CYAN, COLOR_BLACK);
 	init_pair(5, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(6, COLOR_BLACK, COLOR_WHITE);
 
     // Get the MySQL connection
-    MYSQL *conn = get_mysql_connection();
+    // MYSQL *conn = get_mysql_connection();
 
 	while (!canExit) {
-		Route nextRoute = EXIT;
+		Route nextRoute = ROUTE_EXIT;
 		switch (executionStack[currentRouteIndex]) {
-			case INSTRUCTOR_REGISTER:
+			case ROUTE_INSTRUCTOR_REGISTER:
 				nextRoute = render_register_view(INSTRUCTOR);
 				break;
-			case INSTRUCTOR_LOGIN:
+			case ROUTE_INSTRUCTOR_LOGIN:
                 nextRoute = render_login_view(INSTRUCTOR);
                 break;
-			case INSTRUCTOR_HOME:
+			case ROUTE_INSTRUCTOR_DASHBOARD:
 				nextRoute = render_instructor_dashboard_view();
 				break;
+			case ROUTE_INSTRUCTOR_NEW_COURSE:
+				nextRoute = render_instructor_new_course_view();
+				break;
 
-			case LEARNER_REGISTER:
+			case ROUTE_LEARNER_REGISTER:
 				nextRoute = render_register_view(LEARNER);
 				break;
-			case LEARNER_LOGIN:
+			case ROUTE_LEARNER_LOGIN:
 				nextRoute = render_login_view(LEARNER);
+				break;
+			case ROUTE_LEARNER_DASHBOARD:
+				nextRoute = render_learner_dashboard_view();
+				break;
+			case ROUTE_LEARNER_COURSES:
+				nextRoute = render_learner_courses_view();
+				break;
+
+			case ROUTE_LOGOUT:
+				process_user_logout(executionStack, &stackSize, &currentRouteIndex);
+				nextRoute = ROUTE_WELCOME;
 				break;
 			default:
 				nextRoute = render_welcome_view();
 		}
 
-		if (nextRoute == BACK) {
-			if (currentRouteIndex > 0) {
+		if (nextRoute == ROUTE_BACK) {
+			if (stackSize > 1) {
 				currentRouteIndex--;
+				stackSize--;
 				nextRoute = executionStack[currentRouteIndex];
 			} else {
-				nextRoute = EXIT;
+				nextRoute = ROUTE_EXIT;
 			}
 		} else {
 			executionStack = add_route_to_execution_stack(executionStack, nextRoute, &stackSize, &currentRouteIndex);
 		}
-		canExit = nextRoute == EXIT;
+		canExit = nextRoute == ROUTE_EXIT;
 	}
 
 	free(executionStack);
 
 	endwin();
 
-    mysql_close(conn);
+    // mysql_close(conn);
 
     return EXIT_SUCCESS;
 }

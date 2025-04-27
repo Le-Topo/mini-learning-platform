@@ -9,11 +9,11 @@ QueryResponseStatus create_user(char *email, char *password, char *firstname, ch
   MYSQL *conn = get_mysql_connection();
 
   FieldMapping user_insert_schema[] = {
-    { "firstname", MYSQL_TYPE_STRING, offsetof(User, firstname) },
-    { "lastname", MYSQL_TYPE_STRING, offsetof(User, lastname) },
-    { "email", MYSQL_TYPE_STRING, offsetof(User, email) },
-    { "password", MYSQL_TYPE_STRING, offsetof(User, password) },
-    { "role", MYSQL_TYPE_TINY, offsetof(User, role) }
+    { "firstname", MYSQL_TYPE_STRING, offsetof(User, firstname), sizeof(((User *)0)->firstname) },
+    { "lastname", MYSQL_TYPE_STRING, offsetof(User, lastname), sizeof(((User *)0)->lastname) },
+    { "email", MYSQL_TYPE_STRING, offsetof(User, email), sizeof(((User *)0)->email) },
+    { "password", MYSQL_TYPE_STRING, offsetof(User, password), sizeof(((User *)0)->password) },
+    { "role", MYSQL_TYPE_TINY, offsetof(User, role), 0 }
   };
 
   User user = {

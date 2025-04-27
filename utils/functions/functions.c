@@ -106,3 +106,13 @@ char* hash_string(char *str)
 
     return hash_str;
 }
+
+// This function is used to free a linked list
+void free_linked_list(void *list, size_t next_offset) {
+    void *p = list;
+    while (p) {
+        void *next = *(void **)((char *)p + next_offset);
+        free(p);
+        p = next;
+    }
+}

@@ -105,12 +105,31 @@ void free_form_and_fields(FORM *form, FIELD **fields, int num_fields)
     unpost_form(form);
     free_form(form);
 
-    for (int i = 0; i < num_fields; i++) {
-        if (fields[i] != NULL) {
+    free_fields(fields, num_fields);
+}
+
+void free_fields(FIELD **fields, int num_fields)
+{
+    for (int i = 0; i < num_fields; i++)
+    {
+        if (fields[i] != NULL)
+        {
             free_field(fields[i]);
         }
     }
     free(fields);
+}
+
+void free_form_and_fields_groups(FORM *form, FieldsGroup *fields_groups, int num_fields_groups)
+{
+    unpost_form(form);
+    free_form(form);
+
+    for (int i = 0; i < num_fields_groups; i++)
+    {
+        free_fields(fields_groups[i].fields, fields_groups[i].fields_count);
+    }
+    free(fields_groups);
 }
 
 FIELD** setup_fields(FieldProps *fields_props, int num_fields)
@@ -121,20 +140,11 @@ FIELD** setup_fields(FieldProps *fields_props, int num_fields)
         int labelWidth = 0;
         if (fields_props[i].inlined_label)
         {
-            labelWidth = (int) strlen(fields_props[i].label);
+            labelWidth = (int) strlen(fields_props[i].label)+1;
         }
-
-        int labelX = fields_props[i].startx;
-        int labelY = fields_props[i].starty - 1;
-        if (fields_props[i].inlined_label)
-        {
-            labelX += fields_props[i].width + 1;
-            labelY = fields_props[i].starty;
-        }
-        mvwprintw(stdscr, labelY, labelX, "%s", fields_props[i].label);
 
         tmp[i] = new_field(fields_props[i].height, fields_props[i].width, fields_props[i].starty, labelWidth + fields_props[i].startx, 0, 0);
-        set_field_back(tmp[i], A_UNDERLINE); // Print a line for the option
+        set_field_back(tmp[i], COLOR_PAIR(6)); // Print a line for the option
         field_opts_off(tmp[i], O_AUTOSKIP); // Don't go to next field when this field is filled up
         set_field_buffer(tmp[i], 1, fields_props[i].label);
     }
@@ -166,9 +176,16 @@ void attach_labels_to_fields(FIELD **fields, FieldProps *fields_props, int num_f
         int labelY = fields_props[i].starty - 1;
         if (fields_props[i].inlined_label)
         {
-            labelX += fields_props[i].width + 1;
             labelY = fields_props[i].starty;
         }
         mvwprintw(stdscr, labelY, labelX, "%s", fields_props[i].label);
+    }
+}
+
+void set_route_from_exit_keys(int pressed_key, Route *route) {
+    if (pressed_key == BACK_KEY) {
+        *route = ROUTE_BACK;
+    } else if (pressed_key == EXIT_KEY) {
+        *route = ROUTE_EXIT;
     }
 }

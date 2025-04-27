@@ -70,3 +70,33 @@ char* get_instructor_sidebar_item_name(InstructorSidebarItem item) {
 char** get_instructor_sidebar_items() {
     return sidebar_items;
 }
+
+Route get_instructor_page_route_from_key(int pressed_key)
+{
+  if (!can_handle_pressed_key_in_sidebar(pressed_key)) {
+    return ROUTE_EXIT;
+  }
+
+  const InstructorSidebarItem selectedItem = (InstructorSidebarItem)(pressed_key - KEY_F(1));
+
+  switch (selectedItem) {
+    case INSTRUCTOR_DASHBOARD:
+      return ROUTE_INSTRUCTOR_DASHBOARD;
+    case INSTRUCTOR_COURSES:
+      return ROUTE_INSTRUCTOR_COURSES;
+    case INSTRUCTOR_NEW_COURSE:
+      return ROUTE_INSTRUCTOR_NEW_COURSE;
+    case INSTRUCTOR_NOTIFICATIONS:
+      return ROUTE_INSTRUCTOR_NOTIFICATIONS;
+    case INSTRUCTOR_SETTINGS:
+      return ROUTE_INSTRUCTOR_SETTINGS;
+    case INSTRUCTOR_LOGOUT:
+      return ROUTE_LOGOUT;
+    default:
+      return ROUTE_EXIT;
+  }
+}
+
+bool can_handle_pressed_key_in_sidebar(int pressed_key) {
+    return (pressed_key >= KEY_F(1) && pressed_key <= KEY_F(INSTRUCTOR_SIDEBAR_ITEMS_COUNT));
+}

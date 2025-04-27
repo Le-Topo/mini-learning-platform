@@ -5,7 +5,7 @@
 #include "./register.view.h"
 
 #define FIELDS_COUNT 5
-#define SUBMIT_KEY (KEY_F(1))
+#define SUBMIT_KEY (KEY_F(10))
 
 Route render_register_view(UserRole user_role) {
     // WINDOW *registerWindow = newwin(MAX_WIN_LINES, MAX_WIN_COLS, 1, 1);
@@ -18,7 +18,7 @@ Route render_register_view(UserRole user_role) {
     int ctrl = 0;
     char pageTitle[30];
     sprintf(pageTitle, "Inscription (%s)", get_user_role_description(user_role));
-    Route nextRoute = EXIT;
+    Route nextRoute = ROUTE_EXIT;
     bool shouldRefreshScreen = true;
 
     FORM  *registerForm = NULL;
@@ -54,7 +54,7 @@ Route render_register_view(UserRole user_role) {
     draw_rectangle(stdscr, 30, 4, 78, 16);
 
     int submitButtonX = 3, submitButtonY = 16;
-    draw_rectangle_with_text(stdscr, &submitButtonX, &submitButtonY, "[F1] Soumettre", 2, 1, true, MAX_WIN_COLS);
+    draw_rectangle_with_text(stdscr, &submitButtonX, &submitButtonY, "[F10] Soumettre", 2, 1, true, MAX_WIN_COLS);
 
     move(fields_props[0].starty, fields_props[0].startx);
     post_form(registerForm);
@@ -78,9 +78,11 @@ Route render_register_view(UserRole user_role) {
                     break;
                 }
             }
-            // bool passwordsMatch = strcmp(field_buffer(fields[3], 0), field_buffer(fields[4], 0)) == 0;
+            char *password = trim_whitespaces(field_buffer(fields[3], 0));
+            char *confirmPassword = trim_whitespaces(field_buffer(fields[4], 0));
+            bool passwordsMatch = strcmp(password, confirmPassword) == 0;
 
-            if (formIsInvalid || someFieldIsEmpty) {
+            if (formIsInvalid || someFieldIsEmpty || !passwordsMatch) {
                 wattron(stdscr, COLOR_PAIR(1));
                 print_in_hmiddle_of_window(stdscr, 19, MAX_WIN_COLS, "Formulaire invalide !");
                 wattroff(stdscr, COLOR_PAIR(1));
@@ -104,6 +106,15 @@ Route render_register_view(UserRole user_role) {
                     trim_whitespaces((char *)lastname),
                     user_role
                 );
+
+                if (user_role == INSTRUCTOR) {
+                    nextRoute = ROUTE_INSTRUCTOR_DASHBOARD;
+                } else if (user_role == LEARNER) {
+                    nextRoute = ROUTE_LEARNER_DASHBOARD;
+                } else {
+                    nextRoute = ROUTE_EXIT;
+                }
+                break;
             }
         }
 
@@ -114,7 +125,7 @@ Route render_register_view(UserRole user_role) {
     free_form_and_fields(registerForm, fields, FIELDS_COUNT);
 
     if (ctrl == BACK_KEY) {
-        nextRoute = BACK;
+        nextRoute = ROUTE_BACK;
     }
 
     return nextRoute;

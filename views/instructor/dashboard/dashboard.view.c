@@ -25,13 +25,19 @@ Route render_instructor_dashboard_view()
     render_instructor_sidebar(stdscr, currentSidebarPage);
 //    refresh();
 
-    Route nextRoute = EXIT;
+    Route nextRoute = ROUTE_EXIT;
 //    bool shouldRefreshScreen = true;
 
 
     while (ctrl != EXIT_KEY && ctrl != BACK_KEY) {
-        ctrl = getch();
+      if (can_handle_pressed_key_in_sidebar(ctrl)) {
+        nextRoute = get_instructor_page_route_from_key(ctrl);
+        break;
+      }
+
+      ctrl = getch();
     }
 
+    set_route_from_exit_keys(ctrl, &nextRoute);
     return nextRoute;
 }
