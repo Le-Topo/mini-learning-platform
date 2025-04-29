@@ -5,6 +5,9 @@
 #ifndef SESSION_H
 #define SESSION_H
 
+#include "../utils/database/db-orm.h"
+#define SESSIONS_TABLE "sessions"
+
 struct Session {
   long id;
   long user_id; // Foreign key to User
@@ -14,5 +17,9 @@ struct Session {
   char *updated_at; // ISO 8601 format
 };
 typedef struct Session Session;
+
+QueryResponseStatus create_session(long user_id);
+
+QueryResponseStatus close_session(long user_id);
 
 #endif //SESSION_H

@@ -61,6 +61,13 @@ void render_learner_sidebar(WINDOW *win, LearnerSidebarItem selected_item) {
 
     mvwhline(win, 4, LEARNER_SIDEBAR_WIDTH + LEARNER_SIDEBAR_START_X + 4, 0, MAX_WIN_COLS - LEARNER_SIDEBAR_WIDTH - LEARNER_SIDEBAR_START_X);
 
+    User user = get_session_user();
+    char greetings[60];
+    snprintf(greetings, sizeof(greetings), "Bonjour, %s !", user.firstname);
+    mvhline(LEARNER_SIDEBAR_HEIGHT + LEARNER_SIDEBAR_START_Y+1, LEARNER_SIDEBAR_START_X, '-', LEARNER_SIDEBAR_WIDTH + LEARNER_SIDEBAR_START_X-1);
+
+    mvwprintw(win, LEARNER_SIDEBAR_HEIGHT + LEARNER_SIDEBAR_START_Y+2, 5, "%s", greetings);
+
     wrefresh(win);
 }
 
@@ -100,4 +107,13 @@ Route get_learner_page_route_from_key(int pressed_key)
 
 bool can_handle_pressed_key_in_learner_sidebar(int pressed_key) {
     return (pressed_key >= KEY_F(1) && pressed_key <= KEY_F(LEARNER_SIDEBAR_ITEMS_COUNT));
+}
+
+void change_page_title(WINDOW *win, const char *title) {
+    int titleX = (LEARNER_SIDEBAR_WIDTH + LEARNER_SIDEBAR_START_X + 4 + MAX_WIN_COLS - strlen(title))/2;
+    mvwprintw(win, 2, LEARNER_FREE_SPACE_START_X, "%s", LONG_BLANK_LINE);
+    mvwprintw(win, 2, LEARNER_FREE_SPACE_START_X+30, "%s", LONG_BLANK_LINE);
+    wattron(win, A_BOLD);
+    mvwprintw(win, 2, titleX, "%s", title);
+    wattroff(win, A_BOLD);
 }

@@ -14,12 +14,14 @@
 #include "views/instructor/new-course/new-course.view.h"
 #include "views/learner/dashboard/dashboard.view.h"
 #include "views/learner/courses/courses.view.h"
+#include "utils/session-handler/session-handler.h"
 
 void process_user_logout(Route *stack, int *currentStackSize, int *currentRouteIndex) {
 	free(stack);
 	stack = NULL;
 	*currentStackSize = 0;
 	*currentRouteIndex = 0;
+	destroy_session();
 }
 
 int main(int argc, char *argv[]) {
@@ -45,7 +47,7 @@ int main(int argc, char *argv[]) {
 	init_pair(6, COLOR_BLACK, COLOR_WHITE);
 
     // Get the MySQL connection
-    // MYSQL *conn = get_mysql_connection();
+    MYSQL *conn = get_mysql_connection();
 
 	while (!canExit) {
 		Route nextRoute = ROUTE_EXIT;
@@ -102,7 +104,7 @@ int main(int argc, char *argv[]) {
 
 	endwin();
 
-    // mysql_close(conn);
+    mysql_close(conn);
 
     return EXIT_SUCCESS;
 }

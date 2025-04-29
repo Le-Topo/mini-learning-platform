@@ -16,62 +16,106 @@ QueryResponseStatus create_user(char *email, char *password, char *firstname, ch
     { "role", MYSQL_TYPE_TINY, offsetof(User, role), 0 }
   };
 
-  User user = {
-    .firstname = firstname,
-    .lastname = lastname,
-    .email = email,
-    .password = password,
-    .role = role
-  };
+  User user;
+  memset(&user, 0, sizeof(User));
+  strncpy(user.firstname, firstname, sizeof(user.firstname));
+  strncpy(user.lastname, lastname, sizeof(user.lastname));
+  strncpy(user.email, email, sizeof(user.email));
+  strncpy(user.password, password, sizeof(user.password));
+  user.role = role;
 
-//  log_message("Inserting user: %s %s %s %s", user.firstname, user.lastname, user.email, user.password);
+  log_message("Inserting user: %s %s %s %s", user.firstname, user.lastname, user.email, user.password);
 
   return insert_into_table(conn, USERS_TABLE, user_insert_schema, sizeof(user_insert_schema) / sizeof(FieldMapping), &user);
+}
 
-//  const char *query = "INSERT INTO users (email, password, firstname, lastname, role) VALUES (?, ?, ?, ?, ?)";
-//  MYSQL_STMT *stmt = mysql_stmt_init(conn);
-//
-//  if (mysql_stmt_prepare(stmt, query, strlen(query)) != 0) {
-//      log_message("mysql_stmt_prepare() failed: %s\n", mysql_stmt_error(stmt));
-//      mysql_stmt_close(stmt);
-//      return false;
-//  }
-//
-//
-//  MYSQL_BIND bind[5];
-//  memset(bind, 0, sizeof(bind));
-//
-//  bind[0].buffer_type = MYSQL_TYPE_STRING;
-//  bind[0].buffer = (char *)email;
-//  bind[0].buffer_length = strlen(email);
-//
-//  bind[1].buffer_type = MYSQL_TYPE_STRING;
-//  bind[1].buffer = (char *)password;
-//  bind[1].buffer_length = strlen(password);
-//
-//  bind[2].buffer_type = MYSQL_TYPE_STRING;
-//    bind[2].buffer = (char *)firstname;
-//    bind[2].buffer_length = strlen(firstname);
-//
-//    bind[3].buffer_type = MYSQL_TYPE_STRING;
-//    bind[3].buffer = (char *)lastname;
-//    bind[3].buffer_length = strlen(lastname);
-//
-//    bind[4].buffer_type = MYSQL_TYPE_TINY;
-//    bind[4].buffer = (char *)&role;
-//    bind[1].is_null = 0;
-//    bind[1].length = 0;
-//
-//    if (mysql_stmt_bind_param(stmt, bind) != 0) {
-//        log_message("Binding error for statement : %s\n", mysql_stmt_error(stmt));
-//        return false;
-//    }
-//
-//    if (mysql_stmt_execute(stmt) != 0) {
-//        log_message("Unable to execute query statement : %s\n", mysql_stmt_error(stmt));
-//        return false;
-//    }
-//
-//    mysql_stmt_close(stmt);
-//    return true;
+QueryResponseStatus email_exists(char *email, bool *exists)
+{
+  MYSQL *conn = get_mysql_connection();
+
+  char whereClause[80];
+  snprintf(whereClause, sizeof(whereClause), "WHERE email = '%s'", email);
+
+  int count = 0;
+  QueryResponseStatus status = select_count_from_table(
+    conn,
+    USERS_TABLE,
+    whereClause,
+    &count
+  );
+
+  if (status != QUERY_SUCCESS) {
+    log_message("Unable to check if email exists: %s", mysql_error(conn));
+    return status;
+  }
+
+  *exists = (count > 0);
+
+  return QUERY_SUCCESS;
+}
+
+QueryResponseStatus get_user_by_email_and_password(char *email, char *password, UserRole role, User *user)
+{
+  MYSQL *conn = get_mysql_connection();
+
+  char whereClause[80];
+  snprintf(whereClause, sizeof(whereClause), " WHERE email = '%s' AND password = '%s' AND role = %d ", email, password, role);
+
+  return select_one_from_table(
+    conn,
+    USERS_TABLE,
+    "*",
+    whereClause,
+    convert_mysql_fetched_row_to_user,
+    (void*) user
+  );
+}
+
+void convert_mysql_fetched_row_to_user(MYSQL_ROW row, MYSQL_FIELD *fields, int num_fields, void *user)
+{
+  if (!user) return;
+  User *user_ptr = (User *)user;
+
+  for (int i = 0; i < num_fields; i++) {
+    const char *name = fields[i].name;
+    const char *value = row[i];
+
+    if (strcmp(name, "firstname") == 0) {
+      strncpy(user_ptr->firstname, value, sizeof(user_ptr->firstname));
+    } else if (strcmp(name, "lastname") == 0) {
+      strncpy(user_ptr->lastname, value, sizeof(user_ptr->lastname));
+    } else if (strcmp(name, "email") == 0) {
+      strncpy(user_ptr->email, value, sizeof(user_ptr->email));
+    } else if (strcmp(name, "password") == 0) {
+      strncpy(user_ptr->password, value, sizeof(user_ptr->password));
+    } else if (strcmp(name, "role") == 0) {
+      user_ptr->role = atoi(value);
+    } else if (strcmp(name, "id") == 0) {
+      user_ptr->id = atoi(value);
+    } else if (strcmp(name, "distinction") == 0 && value != NULL) {
+      strncpy(user_ptr->distinction, value, sizeof(user_ptr->distinction));
+    } else if (strcmp(name, "created_at") == 0) {
+      strncpy(user_ptr->created_at, value, sizeof(user_ptr->created_at));
+    } else if (strcmp(name, "updated_at") == 0) {
+      strncpy(user_ptr->updated_at, value, sizeof(user_ptr->updated_at));
+    }
+  }
+
+}
+
+QueryResponseStatus get_user_by_id(long id, User *user)
+{
+  MYSQL *conn = get_mysql_connection();
+
+  char whereClause[80];
+  snprintf(whereClause, sizeof(whereClause), " WHERE id = %ld", id);
+
+  return select_one_from_table(
+    conn,
+    USERS_TABLE,
+    "*",
+    whereClause,
+    convert_mysql_fetched_row_to_user,
+    (void*) user
+  );
 }

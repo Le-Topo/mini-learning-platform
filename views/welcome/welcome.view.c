@@ -14,7 +14,6 @@ Route render_welcome_view()
   tabs[0] = "Apprenant";
   tabs[1] = "Instructeur";
   tabs[2] = "Administrateur";
-  bool hasFocus = false;
 
   int currentTab = 0;
   char *currentQuote = get_random_motivational_quote(get_user_role_from_tab(currentTab));
@@ -41,7 +40,8 @@ Route render_welcome_view()
       mvprintw(13, 34, BLANK_LINE);
       mvprintw(15, 34, BLANK_LINE);
       mvprintw(17, 34, BLANK_LINE);
-      print_in_hmiddle_of_window(stdscr, 26, MAX_WIN_COLS, LONG_BLANK_LINE);
+      mvwprintw(stdscr, 26, 0, LONG_BLANK_LINE);
+      mvwprintw(stdscr, 26, 30, LONG_BLANK_LINE);
 
 
       currentQuote = get_random_motivational_quote(get_user_role_from_tab(currentTab));

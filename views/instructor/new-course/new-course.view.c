@@ -158,8 +158,8 @@ void sync_course_parts_properties_with_form(FIELD **fields, CoursePart *course_p
     FIELD *titleField = fields[i * 2];
     FIELD *contentField = fields[i * 2 + 1];
 
-    course_parts[i].title = strdup(field_buffer(titleField, 0));
-    course_parts[i].content = strdup(field_buffer(contentField, 0));
+    //course_parts[i].title = trim_whitespaces(field_buffer(titleField, 0));
+    //course_parts[i].content = trim_whitespaces(field_buffer(contentField, 0));
   }
 }
 

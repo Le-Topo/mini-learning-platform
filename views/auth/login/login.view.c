@@ -73,17 +73,25 @@ Route render_login_view(UserRole user_role) {
                 mvprintw(22, 34, "- L'email doit etre valide");
                 mvprintw(23, 34, "- Le mot de passe doit contenir au moins 6 caracteres");
             } else {
-                const char *password = field_buffer(fields[0], 0);
-                const char *email = field_buffer(fields[1], 0);
+                char *email = trim_whitespaces(field_buffer(fields[0], 0));
+                char *password = trim_whitespaces(field_buffer(fields[1], 0));
 
-//                register_user(
-//                    trim_whitespaces((char *)email),
-//                    trim_whitespaces((char *)password),
-//                    trim_whitespaces((char *)firstname),
-//                    trim_whitespaces((char *)lastname),
-//                    user_role
-//                );
-                mvprintw(23, 34, "Enregistrement de l'utilisateur...");
+                User user;
+                memset(&user, 0, sizeof(User));
+                login_user(email, password, user_role, &user);
+                if (user.id == 0) {
+                    wattron(stdscr, COLOR_PAIR(1));
+                    print_in_hmiddle_of_window(stdscr, 19, MAX_WIN_COLS, "Identifiants incorrects !");
+                    wattroff(stdscr, COLOR_PAIR(1));
+                } else {
+                    if (user.role == LEARNER) {
+                        nextRoute = ROUTE_LEARNER_DASHBOARD;
+                    } else if (user.role == INSTRUCTOR) {
+                        nextRoute = ROUTE_INSTRUCTOR_DASHBOARD;
+                    }
+                    break;
+                }
+
             }
         }
 

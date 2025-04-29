@@ -9,19 +9,22 @@
 #include "../utils/enums/course-level.h"
 #include "../utils/database/db-orm.h"
 
+#define COURSES_TABLE "courses"
+
 typedef struct Course Course;
 struct Course {
   long id;
-  char title[256];
-  char description[512];
+  long instructor_id; // ID of the instructor who created the course
+  char title[100];
+  char description[200];
   CourseLevel level;
   int duration; // in hours
-  char tags[256]; // comma-separated tags
+  char tags[100]; // comma-separated tags
   bool is_validated; // true if the course is validated by an administrator
-  char validation_message[512]; // message from the administrator
+  char validation_message[50]; // message from the administrator
 
-  char created_at[256]; // ISO 8601 format
-  char updated_at[256]; // ISO 8601 format
+  char created_at[50]; // ISO 8601 format
+  char updated_at[50]; // ISO 8601 format
 
   Course *next; // Pointer to the next course in the list
   Course *prev; // Pointer to the previous course in the list

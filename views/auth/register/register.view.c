@@ -94,27 +94,34 @@ Route render_register_view(UserRole user_role) {
 
                 // move(fields_props[0].starty, fields_props[0].startx);
             } else {
-                const char *firstname = field_buffer(fields[0], 0);
-                const char *lastname = field_buffer(fields[1], 0);
-                const char *email = field_buffer(fields[2], 0);
-                const char *password = field_buffer(fields[3], 0);
+                char *firstname = trim_whitespaces(field_buffer(fields[0], 0));
+                char *lastname = trim_whitespaces(field_buffer(fields[1], 0));
+                char *email = trim_whitespaces(field_buffer(fields[2], 0));
+                bool emailExists = false;
+                email_exists(email, &emailExists);
 
-                register_user(
-                    trim_whitespaces((char *)email),
-                    trim_whitespaces((char *)password),
-                    trim_whitespaces((char *)firstname),
-                    trim_whitespaces((char *)lastname),
-                    user_role
-                );
-
-                if (user_role == INSTRUCTOR) {
-                    nextRoute = ROUTE_INSTRUCTOR_DASHBOARD;
-                } else if (user_role == LEARNER) {
-                    nextRoute = ROUTE_LEARNER_DASHBOARD;
+                if (emailExists) {
+                    wattron(stdscr, COLOR_PAIR(1));
+                    print_in_hmiddle_of_window(stdscr, 19, MAX_WIN_COLS, "Cette adresse email est deja prise !");
+                    wattron(stdscr, COLOR_PAIR(1));
                 } else {
-                    nextRoute = ROUTE_EXIT;
+                    register_user(
+                        email,
+                        password,
+                        firstname,
+                        lastname,
+                        user_role
+                    );
+
+                    if (user_role == INSTRUCTOR) {
+                        nextRoute = ROUTE_INSTRUCTOR_DASHBOARD;
+                    } else if (user_role == LEARNER) {
+                        nextRoute = ROUTE_LEARNER_DASHBOARD;
+                    } else {
+                        nextRoute = ROUTE_EXIT;
+                    }
+                    break;
                 }
-                break;
             }
         }
 

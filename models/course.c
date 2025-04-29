@@ -7,18 +7,6 @@
 QueryResponseStatus get_courses(char *title, bool validated, CourseList **course_list_ptr) {
     MYSQL *conn = get_mysql_connection();
 
-    FieldMapping courses_select_schema[] = {
-        { "id", MYSQL_TYPE_LONGLONG, offsetof(Course, id), 0},
-        { "title", MYSQL_TYPE_STRING, offsetof(Course, title), sizeof(((Course *)0)->title) },
-        { "description", MYSQL_TYPE_STRING, offsetof(Course, description), sizeof(((Course *)0)->description) },
-        { "level", MYSQL_TYPE_TINY, offsetof(Course, level), 0 },
-        { "duration", MYSQL_TYPE_LONG, offsetof(Course, duration), 0 },
-        { "tags", MYSQL_TYPE_STRING, offsetof(Course, tags), sizeof(((Course *)0)->tags) },
-        { "is_validated", MYSQL_TYPE_TINY, offsetof(Course, is_validated), 0 },
-        { "validation_message", MYSQL_TYPE_STRING, offsetof(Course, validation_message), sizeof(((Course *)0)->validation_message) },
-        { "created_at", MYSQL_TYPE_STRING, offsetof(Course, created_at), sizeof(((Course *)0)->created_at) },
-        { "updated_at", MYSQL_TYPE_STRING, offsetof(Course, updated_at), sizeof(((Course *)0)->updated_at) }
-    };
     char whereClause[80];
     snprintf(whereClause, sizeof(whereClause), "WHERE is_validated = %d AND title LIKE ", validated);
     strcat(whereClause, "'%");
@@ -30,7 +18,7 @@ QueryResponseStatus get_courses(char *title, bool validated, CourseList **course
 
     QueryResponseStatus status = select_from_table(
         conn,
-        "courses",
+        COURSES_TABLE,
         "*",
         whereClause,
         add_fetched_course_to_list,
@@ -80,6 +68,7 @@ Course* convert_mysql_fetched_row_to_course(MYSQL_ROW row, MYSQL_FIELD *fields, 
         if (!value) continue;
 
         if (strcmp(name, "id") == 0) c->id = atol(value);
+        else if (strcmp(name, "instructor_id") == 0) c->instructor_id = atol(value);
         else if (strcmp(name, "title") == 0) strncpy(c->title, value, sizeof(c->title));
         else if (strcmp(name, "description") == 0) strncpy(c->description, value, sizeof(c->description));
         else if (strcmp(name, "level") == 0) c->level = atoi(value);

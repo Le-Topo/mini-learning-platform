@@ -151,20 +151,6 @@ FIELD** setup_fields(FieldProps *fields_props, int num_fields)
     tmp[num_fields] = NULL;
 
     return tmp;
-    // form = new_form(fields);
-    // post_form(form);
-
-    // for (int i = 0; i < num_fields; i++)
-    // {
-    //     int labelX = fields_props[i].startx;
-    //     int labelY = fields_props[i].starty - 1;
-    //     if (fields_props[i].inlined_label)
-    //     {
-    //         labelX += fields_props[i].width + 1;
-    //         labelY = fields_props[i].starty;
-    //     }
-    //     mvwprintw(stdscr, labelY, labelX, "%s", fields_props[i].label);
-    // }
 
 }
 

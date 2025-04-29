@@ -8,6 +8,7 @@
 #include <curses.h>
 #include "../../utils/curses/curses-utilities.h"
 #include "../../routes/routes.h"
+#include "../../utils/session-handler/session-handler.h"
 
 #define LEARNER_SIDEBAR_WIDTH 30
 #define LEARNER_SIDEBAR_HEIGHT 20
@@ -38,5 +39,7 @@ char** get_learner_sidebar_items();
 Route get_learner_page_route_from_key(int pressed_key);
 
 bool can_handle_pressed_key_in_learner_sidebar(int pressed_key);
+
+void change_page_title(WINDOW *win, const char *title);
 
 #endif //LEARNER_LAYOUT_H

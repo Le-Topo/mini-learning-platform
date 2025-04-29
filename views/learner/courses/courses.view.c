@@ -53,6 +53,8 @@ Route render_learner_courses_view()
     CourseList *pCoursesList = NULL;
     get_validated_courses("", &pCoursesList);
     Course *currentCourse = NULL;
+    bool canGoToCourseDetails = false;
+    char ctrlStr[8];
 
     refresh();
     WINDOW *coursesListWindow = newwin(
@@ -70,6 +72,8 @@ Route render_learner_courses_view()
       }
 
       handle_form_driver(searchForm, ctrl, true);
+
+     snprintf(ctrlStr, 8, "%c", ctrl);
 
       if (ctrl == SEARCH_BUTTON_KEY) {
         form_driver(searchForm, REQ_VALIDATION);
@@ -97,11 +101,44 @@ Route render_learner_courses_view()
         get_validated_courses(searchQuery, &pCoursesList);
         refresh_courses_list(coursesListWindow, pCoursesList);
         form_driver(searchForm, REQ_VALIDATION);
+      } else if (atoi(ctrlStr) >= 1 && atoi(ctrlStr) <= pCoursesList->count) {
+         canGoToCourseDetails = true;
+         break;
       }
 
       ctrl = getch();
     }
 
+    if (canGoToCourseDetails) {
+        int courseIndex = atoi(ctrlStr) - 1;
+        currentCourse = pCoursesList->head;
+        for (int i = 0; i < courseIndex && currentCourse != NULL; i++) {
+          currentCourse = currentCourse->next;
+        }
+        if (currentCourse != NULL) {
+          for (int i = LEARNER_FREE_SPACE_START_Y-2; i <= LEARNER_FREE_SPACE_START_Y+2; i++) {
+            mvprintw(i, LEARNER_FREE_SPACE_START_X, "%s", LONG_BLANK_LINE);
+            mvprintw(i, LEARNER_FREE_SPACE_START_X+30, "%s", LONG_BLANK_LINE);
+          }
+          refresh();
+          wclear(coursesListWindow);
+          wrefresh(coursesListWindow);
+          WINDOW *courseDetailsWindow = newwin(
+            MAX_WIN_LINES - 15,
+        	MAX_WIN_COLS - LEARNER_SIDEBAR_WIDTH - 4,
+        	LEARNER_FREE_SPACE_START_Y-1,
+        	LEARNER_FREE_SPACE_START_X
+          );
+
+          nextRoute = render_course_details_view(*currentCourse, courseDetailsWindow, MAX_WIN_LINES, MAX_WIN_COLS, nextRoute);
+        } else {
+            nextRoute = ROUTE_LEARNER_COURSES;
+        }
+    }
+
+	wclear(coursesListWindow);
+    delwin(coursesListWindow);
+    free_form_and_fields(searchForm, fields, 1);
     set_route_from_exit_keys(ctrl, &nextRoute);
     free(pCoursesList);
     return nextRoute;

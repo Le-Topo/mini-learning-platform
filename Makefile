@@ -53,14 +53,14 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 check-pdc:
 	@if [ ! -f $(PDC_LIB_DIR)/pdcurses.a ]; then \
 		echo "🧩 PDCurses not found. Automatic installation..."; \
-		$(MAKE) pdcurses-install; \
+#		$(MAKE) pdcurses-install; \
 	fi
 
 # === System dependencies + PDCurses ===
 dependencies:
 	@echo "📦 Installing system dependencies..."
 	sudo apt update
-	sudo apt install -y libmysqlclient-dev libsdl2-dev libsdl2-ttf-dev git make gcc
+	sudo apt install -y libncurses-dev libmysqlclient-dev libsdl2-dev libsdl2-ttf-dev git make gcc
 	@echo "✅ System dependencies installed."
 	#$(MAKE) pdcurses-install
 
@@ -118,4 +118,4 @@ clean:
 	rm -rf $(BUILD_DIR) $(TARGET)
 
 # Define phony targets
-.PHONY: all clean dependencies pdcurses-install check-pdc
+.PHONY: all clean dependencies

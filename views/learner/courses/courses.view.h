@@ -9,7 +9,8 @@
 #include "../learner.layout.h"
 #include "../../../routes/routes.h"
 #include "../../../utils/functions/functions.h"
-#include "../../models/course.h"
+#include "../../../models/course.h"
+#include "../course-details/course-details.view.h"
 
 Route render_learner_courses_view();
 
