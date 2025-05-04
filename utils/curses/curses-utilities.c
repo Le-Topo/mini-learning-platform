@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-09.
+// Created by astrid on 2025-04-09.
 //
 
 #include "./curses-utilities.h"
@@ -144,7 +144,7 @@ FIELD** setup_fields(FieldProps *fields_props, int num_fields)
         }
 
         tmp[i] = new_field(fields_props[i].height, fields_props[i].width, fields_props[i].starty, labelWidth + fields_props[i].startx, 0, 0);
-        set_field_back(tmp[i], COLOR_PAIR(6)); // Print a line for the option
+        set_field_back(tmp[i], COLOR_PAIR(6)); // Set the background color
         field_opts_off(tmp[i], O_AUTOSKIP); // Don't go to next field when this field is filled up
         set_field_buffer(tmp[i], 1, fields_props[i].label);
     }

@@ -9,20 +9,38 @@ to create and manage their own courses and lessons.
 
 ## Libraries to install
 
-- `mysqlclient`: This library is used to connect to the MySQL database. 
-  You can install it using pip:
+You can install the required libraries using the following command:
   ```bash
-  sudo apt-get install libmysqlclient-dev
+  make dependencies
   ```
 
-- `libsdl2-dev`: This library is used for graphics and window management. 
-  You can install it using pip:
+## Database
+
+Be sure to have the `db-crendetentials.h` file in the `utils/database` directory.
+If you don't have it, you can create it by copying the `db-credentials.h.example` file and filling in your database credentials.
+To migrate your created database, you can import the `db.sql` file into your MySQL database.
+
+## Usage
+To compile the project, run the following command:
   ```bash
-  sudo apt-get install libsdl2-dev
+  make
   ```
-  
-- `libsdl2-ttf-dev`: This library is used for rendering fonts in SDL. 
-  You can install it using pip:
+After compiling, you can run the program using the following command:
   ```bash
-  sudo apt-get install libsdl2-ttf-dev
+  cd bin && ./mini_learning_platform
   ```
+
+You can test the program by logging in with the following credentials:
+- Instructor:
+  - email: john@doe.com
+  - Password: 123456
+- Learner:
+  - email: bob@brown.com
+  - Password: 123456
+
+Or you can create a new user by registering with your email and password.
+
+## Features
+- Authentication
+- Course listing
+- Course monitoring process

@@ -1,7 +1,3 @@
-//
-// Created by astri on 2025-04-17.
-//
-
 #include "./instructor.layout.h"
 
 static char *sidebar_items[] = {
@@ -59,6 +55,13 @@ void render_instructor_sidebar(WINDOW *win, InstructorSidebarItem selected_item)
     wattroff(win, A_BOLD);
 
     mvwhline(win, 4, INSTRUCTOR_SIDEBAR_WIDTH + INSTRUCTOR_SIDEBAR_START_X + 4, 0, MAX_WIN_COLS - INSTRUCTOR_SIDEBAR_WIDTH - INSTRUCTOR_SIDEBAR_START_X);
+
+    User user = get_session_user();
+    char greetings[60];
+    snprintf(greetings, sizeof(greetings), "Bonjour, %s !", user.firstname);
+    mvhline(INSTRUCTOR_SIDEBAR_HEIGHT + INSTRUCTOR_SIDEBAR_START_Y+1, INSTRUCTOR_SIDEBAR_START_X, '-', INSTRUCTOR_SIDEBAR_WIDTH + INSTRUCTOR_SIDEBAR_START_X-1);
+
+    mvwprintw(win, INSTRUCTOR_SIDEBAR_HEIGHT + INSTRUCTOR_SIDEBAR_START_Y+2, 5, "%s", greetings);
 
     wrefresh(win);
 }

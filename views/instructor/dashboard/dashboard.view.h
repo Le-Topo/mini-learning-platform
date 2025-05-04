@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-17.
+// Created by astrid on 2025-04-17.
 //
 
 #ifndef INSTRUCTOR_DASHBOARD_VIEW_H

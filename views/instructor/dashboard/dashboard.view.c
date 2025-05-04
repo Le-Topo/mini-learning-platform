@@ -1,7 +1,3 @@
-//
-// Created by astri on 2025-04-17.
-//
-
 #include "./dashboard.view.h"
 
 Route render_instructor_dashboard_view()

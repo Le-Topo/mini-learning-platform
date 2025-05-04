@@ -1,7 +1,3 @@
-//
-// Created by astri on 2025-04-26.
-//
-
 #ifndef DASHBOARD_VIEW_H
 #define DASHBOARD_VIEW_H
 

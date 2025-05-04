@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-11.
+// Created by astrid on 2025-04-11.
 //
 
 #include "functions.h"

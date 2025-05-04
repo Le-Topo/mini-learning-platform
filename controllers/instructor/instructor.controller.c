@@ -1,7 +1,3 @@
-//
-// Created by astri on 2025-04-28.
-//
-
 #include "./instructor.controller.h"
 
 

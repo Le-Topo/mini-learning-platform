@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-09.
+// Created by astrid on 2025-04-09.
 //
 
 #ifndef NCURSES_UTILITIES_H

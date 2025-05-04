@@ -6,6 +6,9 @@
   <component name="BackendCodeEditorMiscSettings">
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
   </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="mini-learning-platform" targetName="check-pdc" />
@@ -14,40 +17,37 @@
       <config projectName="mini-learning-platform" targetName="dependencies" />
     </generated>
   </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9cd3fba9-a25e-4fae-bec1-32cfa57c547e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/instructor/instructor.controller.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/instructor/instructor.controller.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/session.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/session-handler/session-handler.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/session-handler/session-handler.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/learner/course-details/course-details.view.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/learner/course-details/course-details.view.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mini-learning-platform.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rapport projet de session.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/authentication_flowchart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/mld.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/mvc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/report_cover.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/test1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/test2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/test3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/database/db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth/auth.controller.c" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth/auth.controller.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/auth/auth.controller.h" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/auth/auth.controller.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/guest/guest.controller.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/guest/guest.controller.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/course.c" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/course.h" beforeDir="false" afterPath="$PROJECT_DIR$/models/course.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/session.h" beforeDir="false" afterPath="$PROJECT_DIR$/models/session.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.h" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/curses/curses-utilities.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/curses/curses-utilities.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/database/db-orm.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/database/db-orm.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/database/db-orm.h" beforeDir="false" afterPath="$PROJECT_DIR$/utils/database/db-orm.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/auth/login/login.view.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/auth/login/login.view.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/session-handler/session-handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/session-handler/session-handler.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/auth/register/register.view.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/auth/register/register.view.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/learner/courses/courses.view.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/learner/courses/courses.view.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/learner/courses/courses.view.h" beforeDir="false" afterPath="$PROJECT_DIR$/views/learner/courses/courses.view.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/learner/learner.layout.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/learner/learner.layout.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/learner/learner.layout.h" beforeDir="false" afterPath="$PROJECT_DIR$/views/learner/learner.layout.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/welcome/welcome.view.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/welcome/welcome.view.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/instructor/instructor.layout.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/instructor/instructor.layout.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/instructor/instructor.layout.h" beforeDir="false" afterPath="$PROJECT_DIR$/views/instructor/instructor.layout.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +64,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MakefileLocalSettings">
     <option name="availableProjects">
@@ -98,10 +104,13 @@
     <option name="minorVersion" value="1" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2wO1JOlwlU58x0e282w94h95mC5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -115,24 +124,28 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "E:/School/UQTR/Session 2 - Winter 2025/GEI1072 - Resolution des probelemes d'ingenierie en C/session-project/mini-learning-platform",
+    "last_opened_file_path": "E:/School/UQTR/Session 2 - Winter 2025/GEI1072 - Resolution des probelemes d'ingenierie en C/session-project/mini-learning-platform/assets/images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "MakefileSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\School\UQTR\Session 2 - Winter 2025\GEI1072 - Resolution des probelemes d'ingenierie en C\session-project\mini-learning-platform\assets\images" />
+      <recent name="E:\School\UQTR\Session 2 - Winter 2025\GEI1072 - Resolution des probelemes d'ingenierie en C\session-project\mini-learning-platform\assets" />
+      <recent name="E:\School\UQTR\Session 2 - Winter 2025\GEI1072 - Resolution des probelemes d'ingenierie en C\session-project\mini-learning-platform\utils\database" />
+    </key>
+  </component>
   <component name="RunManager" selected="Native Application.all">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="mini-learning-platform" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -153,6 +166,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Native Application.all" />
       <item itemvalue="Native Application.dependencies" />
@@ -167,11 +185,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1745897737638</updated>
-      <workItem from="1745897739668" duration="404000" />
+      <workItem from="1745897739668" duration="28284000" />
+      <workItem from="1746375846659" duration="17437000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="NONE" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/utils/logs/logger.c</url>
+          <line>5</line>
+          <log-expression expression="##include &lt;stdio.h&gt;&#10;##include &lt;stdarg.h&gt;&#10;##include &lt;time.h&gt;&#10;##include &quot;logger.h&quot;&#10;&#10;void log_message(const char *format, ...) {&#10;##ifdef LOGGER_ENABLED&#10;  FILE *log_file = fopen(&quot;app.log&quot;, &quot;a&quot;);&#10;&#10;  if (!log_file) {&#10;    fprintf(stderr, &quot;Unable to open log file !\n&quot;);&#10;    return;&#10;  }&#10;&#10;  // Message horodating&#10;  time_t now = time(NULL);&#10;  struct tm *t = localtime(&amp;now);&#10;  fprintf(log_file, &quot;[%04d-%02d-%02d %02d:%02d:%02d] &quot;,&#10;          t-&gt;tm_year + 1900, t-&gt;tm_mon + 1, t-&gt;tm_mday,&#10;          t-&gt;tm_hour, t-&gt;tm_min, t-&gt;tm_sec);&#10;&#10;  // Message formating&#10;  va_list args;&#10;  va_start(args, format);&#10;  vfprintf(log_file, format, args);&#10;  va_end(args);&#10;&#10;  fprintf(log_file, &quot;\n&quot;);&#10;  fclose(log_file);&#10;##endif&#10;&#10;}" language="C++" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

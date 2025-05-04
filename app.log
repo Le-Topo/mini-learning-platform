@@ -10012,3 +10012,279 @@
 [2025-04-29 12:34:50] MySQL initialization...
 [2025-04-29 12:34:50] MySQL has been initialized successfully !
 [2025-04-29 12:34:50] Connecting to MySQL...
+[2025-05-04 13:37:19] MySQL initialization...
+[2025-05-04 13:37:19] MySQL has been initialized successfully !
+[2025-05-04 13:37:19] Connecting to MySQL...
+[2025-05-04 13:37:19] Connection to MySQL has been established successfully !
+[2025-05-04 13:37:19] Received clause: WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 13:37:19] Executing sql query: SELECT * FROM courses WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 13:37:19] Added course: Introduction a la programmation 1
+[2025-05-04 13:37:19] Added course: Développement web avancé 2
+[2025-05-04 13:37:19] Added course: Data Science pour les débutants 3
+[2025-05-04 13:37:19] Added course: Machine Learning avec Python 4
+[2025-05-04 13:37:19] Added course: Introduction à l'intelligence artificielle 5
+[2025-05-04 13:37:19] Added course: Développement mobile avec Flutter 6
+[2025-05-04 13:37:19] Added course: Cybersécurité pour les débutants 7
+[2025-05-04 13:37:19] Added course: Blockchain et Cryptomonnaies 8
+[2025-05-04 13:43:49] MySQL initialization...
+[2025-05-04 13:43:49] MySQL has been initialized successfully !
+[2025-05-04 13:43:49] Connecting to MySQL...
+[2025-05-04 13:43:49] Connection to MySQL has been established successfully !
+[2025-05-04 13:53:18] Executing sql query: SELECT COUNT(*) FROM users WHERE email = 'astrid@gmail.com'
+[2025-05-04 13:53:18] Inserting user: Astrid Jounang astrid@gmail.com 6951367962714
+[2025-05-04 13:53:18] Query: INSERT INTO users (firstname, lastname, email, password, role) VALUES (?,?,?,?,?)
+[2025-05-04 13:53:18] Astrid Jounang astrid@gmail.com
+[2025-05-04 13:53:18] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 13:53:18] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 13:55:38] MySQL initialization...
+[2025-05-04 13:55:38] MySQL has been initialized successfully !
+[2025-05-04 13:55:38] Connecting to MySQL...
+[2025-05-04 13:55:38] Connection to MySQL has been established successfully !
+[2025-05-04 13:56:12] Executing sql query: SELECT COUNT(*) FROM users WHERE email = 'astrid@gmail.com'
+[2025-05-04 13:56:12] Email astrid@gmail.com exists: 1
+[2025-05-04 13:56:57] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 13:56:57] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 13:59:18] MySQL initialization...
+[2025-05-04 13:59:18] MySQL has been initialized successfully !
+[2025-05-04 13:59:18] Connecting to MySQL...
+[2025-05-04 13:59:19] Connection to MySQL has been established successfully !
+[2025-05-04 13:59:31] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 13:59:31] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 14:02:15] MySQL initialization...
+[2025-05-04 14:02:15] MySQL has been initialized successfully !
+[2025-05-04 14:02:15] Connecting to MySQL...
+[2025-05-04 14:02:15] Connection to MySQL has been established successfully !
+[2025-05-04 14:02:32] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 14:02:32] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 14:02:32] Initializing session for user: astrid@gmail.com
+[2025-05-04 14:02:32] User ID: 24
+[2025-05-04 14:02:32] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 14:03:11] MySQL initialization...
+[2025-05-04 14:03:11] MySQL has been initialized successfully !
+[2025-05-04 14:03:11] Connecting to MySQL...
+[2025-05-04 14:03:11] Connection to MySQL has been established successfully !
+[2025-05-04 14:03:21] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 14:03:21] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 14:03:21] Converting MySQL fetched row to User
+[2025-05-04 14:05:54] MySQL initialization...
+[2025-05-04 14:05:54] MySQL has been initialized successfully !
+[2025-05-04 14:05:54] Connecting to MySQL...
+[2025-05-04 14:05:54] Connection to MySQL has been established successfully !
+[2025-05-04 14:06:05] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 14:06:05] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 14:06:05] Converting MySQL fetched row to User
+[2025-05-04 14:06:05] Initializing session for user: astrid@gmail.com
+[2025-05-04 14:06:05] User ID: 24
+[2025-05-04 14:06:05] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 14:09:38] MySQL initialization...
+[2025-05-04 14:09:38] MySQL has been initialized successfully !
+[2025-05-04 14:09:38] Connecting to MySQL...
+[2025-05-04 14:09:38] Connection to MySQL has been established successfully !
+[2025-05-04 14:09:49] Received clause:  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 14:09:49] Executing sql query: SELECT * FROM users  WHERE email = 'astrid@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 14:09:49] Converting MySQL fetched row to User
+[2025-05-04 14:09:49] Initializing session for user: astrid@gmail.com
+[2025-05-04 14:09:49] User ID: 24
+[2025-05-04 14:09:49] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 14:09:49] Session initialized for user: astrid@gmail.com
+[2025-05-04 14:10:03] Received clause: WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:10:03] Executing sql query: SELECT * FROM courses WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:10:03] Added course: Introduction a la programmation 1
+[2025-05-04 14:10:03] Added course: Développement web avancé 2
+[2025-05-04 14:10:03] Added course: Data Science pour les débutants 3
+[2025-05-04 14:10:03] Added course: Machine Learning avec Python 4
+[2025-05-04 14:10:03] Added course: Introduction à l'intelligence artificielle 5
+[2025-05-04 14:10:03] Added course: Développement mobile avec Flutter 6
+[2025-05-04 14:10:03] Added course: Cybersécurité pour les débutants 7
+[2025-05-04 14:10:03] Added course: Blockchain et Cryptomonnaies 8
+[2025-05-04 14:10:50] Received clause:  WHERE id = 1
+[2025-05-04 14:10:50] Executing sql query: SELECT * FROM users  WHERE id = 1 LIMIT 1
+[2025-05-04 14:10:50] Converting MySQL fetched row to User
+[2025-05-04 14:10:50] Received clause: WHERE course_id = 1
+[2025-05-04 14:10:50] Executing sql query: SELECT * FROM course_parts WHERE course_id = 1
+[2025-05-04 14:10:50] Added course part: Introduction 1
+[2025-05-04 14:10:50] Added course part: Quiz 1 2
+[2025-05-04 14:10:50] Added course part: Les langages de programmation 3
+[2025-05-04 14:10:50] Added course part: Quiz 2 4
+[2025-05-04 14:10:50] Added course part: Conclusion 5
+[2025-05-04 14:11:32] Received clause: WHERE course_part_id = 2
+[2025-05-04 14:11:32] Executing sql query: SELECT * FROM quiz_questions WHERE course_part_id = 2
+[2025-05-04 14:11:32] Added quiz question: Combien de types de langages de programmation existe-t-il ? 1
+[2025-05-04 14:11:32] Added quiz question: Quel est le langage de programmation le plus populaire ? 2
+[2025-05-04 14:11:32] Received clause: WHERE question_id = 1
+[2025-05-04 14:11:32] Executing sql query: SELECT * FROM quiz_answer_suggestions WHERE question_id = 1
+[2025-05-04 14:11:32] Added quiz answer suggestion: 3 1
+[2025-05-04 14:11:32] Added quiz answer suggestion: 5 2
+[2025-05-04 14:11:32] Added quiz answer suggestion: 2 3
+[2025-05-04 14:11:32] Added quiz answer suggestion: 1 4
+[2025-05-04 14:11:32] User has answered question: 0 from index -1
+[2025-05-04 14:11:36] User has answered question: 1 from index 1
+[2025-05-04 14:11:41] Received clause: WHERE question_id = 2
+[2025-05-04 14:11:41] Executing sql query: SELECT * FROM quiz_answer_suggestions WHERE question_id = 2
+[2025-05-04 14:11:41] Added quiz answer suggestion: Python 1
+[2025-05-04 14:11:41] Added quiz answer suggestion: Java 2
+[2025-05-04 14:11:41] Added quiz answer suggestion: C++ 3
+[2025-05-04 14:11:41] Added quiz answer suggestion: Ruby 4
+[2025-05-04 14:11:41] Added quiz answer suggestion: C 5
+[2025-05-04 14:11:41] User has answered question: 0 from index 1
+[2025-05-04 14:11:47] User has answered question: 1 from index 0
+[2025-05-04 14:12:00] Received clause: WHERE course_part_id = 4
+[2025-05-04 14:12:00] Executing sql query: SELECT * FROM quiz_questions WHERE course_part_id = 4
+[2025-05-04 14:12:00] Added quiz question: Quel est l'environnement de développement le plus populaire ? 1
+[2025-05-04 14:12:00] Added quiz question: Quel est le meilleur langage de programmation pour les débutants ? 2
+[2025-05-04 14:12:00] Received clause: WHERE question_id = 3
+[2025-05-04 14:12:00] Executing sql query: SELECT * FROM quiz_answer_suggestions WHERE question_id = 3
+[2025-05-04 14:12:00] Added quiz answer suggestion: Visual Studio Code 1
+[2025-05-04 14:12:00] Added quiz answer suggestion: Eclipse 2
+[2025-05-04 14:12:00] Added quiz answer suggestion: NetBeans 3
+[2025-05-04 14:12:00] Added quiz answer suggestion: Sublime Text 4
+[2025-05-04 14:12:00] User has answered question: 0 from index 0
+[2025-05-04 14:12:06] User has answered question: 1 from index 0
+[2025-05-04 14:12:07] Received clause: WHERE question_id = 4
+[2025-05-04 14:12:07] Executing sql query: SELECT * FROM quiz_answer_suggestions WHERE question_id = 4
+[2025-05-04 14:12:07] Added quiz answer suggestion: Python 1
+[2025-05-04 14:12:07] Added quiz answer suggestion: C++ 2
+[2025-05-04 14:12:07] Added quiz answer suggestion: Java 3
+[2025-05-04 14:12:07] Added quiz answer suggestion: Ruby 4
+[2025-05-04 14:12:07] User has answered question: 0 from index 0
+[2025-05-04 14:12:14] User has answered question: 1 from index 3
+[2025-05-04 14:14:06] MySQL initialization...
+[2025-05-04 14:14:06] MySQL has been initialized successfully !
+[2025-05-04 14:14:06] Connecting to MySQL...
+[2025-05-04 14:14:06] Connection to MySQL has been established successfully !
+[2025-05-04 14:14:32] Executing sql query: SELECT COUNT(*) FROM users WHERE email = 'astrid@gmail.com'
+[2025-05-04 14:14:44] Executing sql query: SELECT COUNT(*) FROM users WHERE email = 'ast@gmail.com'
+[2025-05-04 14:14:44] Inserting user: Ast Jou ast@gmail.com 6951367962714
+[2025-05-04 14:14:44] Query: INSERT INTO users (firstname, lastname, email, password, role) VALUES (?,?,?,?,?)
+[2025-05-04 14:14:44] Received clause:  WHERE email = 'ast@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 14:14:44] Executing sql query: SELECT * FROM users  WHERE email = 'ast@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 14:14:44] Converting MySQL fetched row to User
+[2025-05-04 14:14:44] Initializing session for user: ast@gmail.com
+[2025-05-04 14:14:44] User ID: 25
+[2025-05-04 14:14:44] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 14:14:44] Session initialized for user: ast@gmail.com
+[2025-05-04 14:14:48] Received clause: WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:14:48] Executing sql query: SELECT * FROM courses WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:14:48] Added course: Introduction a la programmation 1
+[2025-05-04 14:14:48] Added course: Développement web avancé 2
+[2025-05-04 14:14:48] Added course: Data Science pour les débutants 3
+[2025-05-04 14:14:48] Added course: Machine Learning avec Python 4
+[2025-05-04 14:14:48] Added course: Introduction à l'intelligence artificielle 5
+[2025-05-04 14:14:48] Added course: Développement mobile avec Flutter 6
+[2025-05-04 14:14:48] Added course: Cybersécurité pour les débutants 7
+[2025-05-04 14:14:48] Added course: Blockchain et Cryptomonnaies 8
+[2025-05-04 14:15:45] Received clause: WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:15:45] Executing sql query: SELECT * FROM courses WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:15:45] Added course: Introduction a la programmation 1
+[2025-05-04 14:15:45] Added course: Développement web avancé 2
+[2025-05-04 14:15:45] Added course: Data Science pour les débutants 3
+[2025-05-04 14:15:45] Added course: Machine Learning avec Python 4
+[2025-05-04 14:15:45] Added course: Introduction à l'intelligence artificielle 5
+[2025-05-04 14:15:45] Added course: Développement mobile avec Flutter 6
+[2025-05-04 14:15:45] Added course: Cybersécurité pour les débutants 7
+[2025-05-04 14:15:45] Added course: Blockchain et Cryptomonnaies 8
+[2025-05-04 14:17:48] Received clause: WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:17:48] Executing sql query: SELECT * FROM courses WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 14:17:48] Added course: Introduction a la programmation 1
+[2025-05-04 14:17:48] Added course: Developpement web avance 2
+[2025-05-04 14:17:48] Added course: Data Science pour les debutants 3
+[2025-05-04 14:17:48] Added course: Machine Learning avec Python 4
+[2025-05-04 14:17:48] Added course: Introduction a l'intelligence artificielle 5
+[2025-05-04 14:17:48] Added course: Developpement mobile avec Flutter 6
+[2025-05-04 14:17:48] Added course: Cybersecurite pour les debutants 7
+[2025-05-04 14:17:48] Added course: Blockchain et Cryptomonnaies 8
+[2025-05-04 14:17:55] Received clause:  WHERE id = 2
+[2025-05-04 14:17:55] Executing sql query: SELECT * FROM users  WHERE id = 2 LIMIT 1
+[2025-05-04 14:17:55] Converting MySQL fetched row to User
+[2025-05-04 14:17:55] Received clause: WHERE course_id = 2
+[2025-05-04 14:17:55] Executing sql query: SELECT * FROM course_parts WHERE course_id = 2
+[2025-05-04 14:17:55] Added course part: Introduction au developpement web avance 1
+[2025-05-04 14:17:55] Added course part: Quiz introduction 2
+[2025-05-04 14:17:55] Added course part: Les meilleures pratiques en developpement web 3
+[2025-05-04 14:17:55] Added course part: Quiz meilleures pratiques 4
+[2025-05-04 14:17:55] Added course part: Conclusion 5
+[2025-05-04 14:20:05] Received clause:  closed_at = CURRENT_TIMESTAMP WHERE user_id = 25 AND closed_at iS NULL
+[2025-05-04 14:20:05] Executing sql query: UPDATE sessions SET  closed_at = CURRENT_TIMESTAMP WHERE user_id = 25 AND closed_at iS NULL
+[2025-05-04 14:20:05] Session destroyed for user: 
+[2025-05-04 17:05:10] MySQL initialization...
+[2025-05-04 17:05:10] MySQL has been initialized successfully !
+[2025-05-04 17:05:10] Connecting to MySQL...
+[2025-05-04 17:05:10] Connection to MySQL has been established successfully !
+[2025-05-04 17:05:50] Received clause:  WHERE email = 'astd@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 17:05:50] Executing sql query: SELECT * FROM users  WHERE email = 'astd@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:05:50] No row found for query: SELECT * FROM users  WHERE email = 'astd@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:07:33] Received clause:  WHERE email = 'ast@gmail.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 17:07:33] Executing sql query: SELECT * FROM users  WHERE email = 'ast@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:07:33] No row found for query: SELECT * FROM users  WHERE email = 'ast@gmail.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:07:53] Received clause:  WHERE email = 'bob@brown.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 17:07:53] Executing sql query: SELECT * FROM users  WHERE email = 'bob@brown.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:07:53] Converting MySQL fetched row to User
+[2025-05-04 17:07:53] Initializing session for user: bob@brown.com
+[2025-05-04 17:07:53] User ID: 4
+[2025-05-04 17:07:53] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 17:07:53] Session initialized for user: bob@brown.com
+[2025-05-04 17:07:58] Received clause: WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 17:07:58] Executing sql query: SELECT * FROM courses WHERE is_validated = 1 AND title LIKE '%%'
+[2025-05-04 17:07:58] Added course: Introduction a la programmation 1
+[2025-05-04 17:07:58] Added course: Developpement web avance 2
+[2025-05-04 17:07:58] Added course: Data Science pour les debutants 3
+[2025-05-04 17:07:58] Added course: Machine Learning avec Python 4
+[2025-05-04 17:07:58] Added course: Introduction a l'intelligence artificielle 5
+[2025-05-04 17:07:58] Added course: Developpement mobile avec Flutter 6
+[2025-05-04 17:07:58] Added course: Cybersecurite pour les debutants 7
+[2025-05-04 17:07:58] Added course: Blockchain et Cryptomonnaies 8
+[2025-05-04 17:10:29] Received clause:  WHERE id = 1
+[2025-05-04 17:10:29] Executing sql query: SELECT * FROM users  WHERE id = 1 LIMIT 1
+[2025-05-04 17:10:29] Converting MySQL fetched row to User
+[2025-05-04 17:10:29] Received clause: WHERE course_id = 1
+[2025-05-04 17:10:29] Executing sql query: SELECT * FROM course_parts WHERE course_id = 1
+[2025-05-04 17:10:29] Added course part: Introduction 1
+[2025-05-04 17:10:29] Added course part: Quiz 1 2
+[2025-05-04 17:10:29] Added course part: Les langages de programmation 3
+[2025-05-04 17:10:29] Added course part: Quiz 2 4
+[2025-05-04 17:10:29] Added course part: Conclusion 5
+[2025-05-04 17:10:33] Received clause: WHERE course_part_id = 2
+[2025-05-04 17:10:33] Executing sql query: SELECT * FROM quiz_questions WHERE course_part_id = 2
+[2025-05-04 17:10:33] Added quiz question: Combien de types de langages de programmation existe-t-il ? 1
+[2025-05-04 17:10:33] Added quiz question: Quel est le langage de programmation le plus populaire ? 2
+[2025-05-04 17:10:33] Received clause: WHERE question_id = 1
+[2025-05-04 17:10:33] Executing sql query: SELECT * FROM quiz_answer_suggestions WHERE question_id = 1
+[2025-05-04 17:10:33] Added quiz answer suggestion: 3 1
+[2025-05-04 17:10:33] Added quiz answer suggestion: 5 2
+[2025-05-04 17:10:33] Added quiz answer suggestion: 2 3
+[2025-05-04 17:10:33] Added quiz answer suggestion: 1 4
+[2025-05-04 17:10:33] User has answered question: 0 from index -1
+[2025-05-04 17:10:45] User has answered question: 1 from index 2
+[2025-05-04 17:10:54] Received clause: WHERE question_id = 2
+[2025-05-04 17:10:54] Executing sql query: SELECT * FROM quiz_answer_suggestions WHERE question_id = 2
+[2025-05-04 17:10:54] Added quiz answer suggestion: Python 1
+[2025-05-04 17:10:54] Added quiz answer suggestion: Java 2
+[2025-05-04 17:10:54] Added quiz answer suggestion: C++ 3
+[2025-05-04 17:10:54] Added quiz answer suggestion: Ruby 4
+[2025-05-04 17:10:54] Added quiz answer suggestion: C 5
+[2025-05-04 17:10:54] User has answered question: 0 from index 2
+[2025-05-04 17:10:56] User has answered question: 1 from index 4
+[2025-05-04 17:12:31] Received clause:  closed_at = CURRENT_TIMESTAMP WHERE user_id = 4 AND closed_at iS NULL
+[2025-05-04 17:12:31] Executing sql query: UPDATE sessions SET  closed_at = CURRENT_TIMESTAMP WHERE user_id = 4 AND closed_at iS NULL
+[2025-05-04 17:12:31] Session destroyed for user: 
+[2025-05-04 17:12:49] Received clause:  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 1 
+[2025-05-04 17:12:49] Executing sql query: SELECT * FROM users  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:12:49] No row found for query: SELECT * FROM users  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 1  LIMIT 1
+[2025-05-04 17:13:14] Received clause:  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 2 
+[2025-05-04 17:13:14] Executing sql query: SELECT * FROM users  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 2  LIMIT 1
+[2025-05-04 17:13:14] Converting MySQL fetched row to User
+[2025-05-04 17:13:14] Initializing session for user: john@doe.com
+[2025-05-04 17:13:14] User ID: 1
+[2025-05-04 17:13:14] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 17:13:14] Session initialized for user: john@doe.com
+[2025-05-04 17:14:57] MySQL initialization...
+[2025-05-04 17:14:57] MySQL has been initialized successfully !
+[2025-05-04 17:14:57] Connecting to MySQL...
+[2025-05-04 17:14:57] Connection to MySQL has been established successfully !
+[2025-05-04 17:15:07] Received clause:  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 2 
+[2025-05-04 17:15:07] Executing sql query: SELECT * FROM users  WHERE email = 'john@doe.com' AND password = '6951367962714' AND role = 2  LIMIT 1
+[2025-05-04 17:15:07] Converting MySQL fetched row to User
+[2025-05-04 17:15:07] Initializing session for user: john@doe.com
+[2025-05-04 17:15:07] User ID: 1
+[2025-05-04 17:15:07] Query: INSERT INTO sessions (user_id) VALUES (?)
+[2025-05-04 17:15:08] Session initialized for user: john@doe.com

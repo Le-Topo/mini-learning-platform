@@ -1,13 +1,10 @@
-//
-// Created by astri on 2025-04-17.
-//
-
 #ifndef INSTRUCTOR_LAYOUT_H
 #define INSTRUCTOR_LAYOUT_H
 
 #include <curses.h>
 #include "../../utils/curses/curses-utilities.h"
 #include "../../routes/routes.h"
+#include "../../utils/session-handler/session-handler.h"
 
 #define INSTRUCTOR_SIDEBAR_WIDTH 30
 #define INSTRUCTOR_SIDEBAR_HEIGHT 20

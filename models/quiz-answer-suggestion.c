@@ -1,7 +1,3 @@
-//
-// Created by astri on 2025-04-29.
-//
-
 #include "./quiz-answer-suggestion.h"
 
 QueryResponseStatus get_quiz_answers_suggestions_by_question_id(long question_id, QuizAnswerSuggestionList **quiz_answer_suggestions_list_ptr) {

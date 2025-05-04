@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-25.
+// Created by astrid on 2025-04-25.
 //
 
 #include "./new-course.view.h"

@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-17.
+// Created by astrid on 2025-04-17.
 //
 
 #include "./db-orm.h"
@@ -80,8 +80,6 @@ QueryResponseStatus insert_into_table(MYSQL *conn, const char *table, const Fiel
     free(binds);
     return QUERY_SERVER_ERROR;
   }
-
-  log_message("%s %s %s", binds[0].buffer, binds[1].buffer, binds[2].buffer);
 
   int status = mysql_stmt_execute(stmt);
 

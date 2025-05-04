@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-28.
+// Created by astrid on 2025-04-28.
 //
 
 #define NEXT_PAGE_KEY KEY_NPAGE

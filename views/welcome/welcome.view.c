@@ -1,6 +1,3 @@
-//
-// Created by astri on 2025-04-11.
-//
 #include "welcome.view.h"
 
 #define TABS_NUMBER 3

@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-26.
+// Created by astrid on 2025-04-26.
 //
 
 #ifndef COURSES_VIEW_H

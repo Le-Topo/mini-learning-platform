@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-17.
+// Created by astrid on 2025-04-17.
 //
 
 #include "./user.h"
@@ -48,7 +48,6 @@ QueryResponseStatus email_exists(char *email, bool *exists)
     log_message("Unable to check if email exists: %s", mysql_error(conn));
     return status;
   }
-
   *exists = (count > 0);
 
   return QUERY_SUCCESS;
@@ -73,6 +72,7 @@ QueryResponseStatus get_user_by_email_and_password(char *email, char *password, 
 
 void convert_mysql_fetched_row_to_user(MYSQL_ROW row, MYSQL_FIELD *fields, int num_fields, void *user)
 {
+  log_message("Converting MySQL fetched row to User");
   if (!user) return;
   User *user_ptr = (User *)user;
 
@@ -91,12 +91,12 @@ void convert_mysql_fetched_row_to_user(MYSQL_ROW row, MYSQL_FIELD *fields, int n
     } else if (strcmp(name, "role") == 0) {
       user_ptr->role = atoi(value);
     } else if (strcmp(name, "id") == 0) {
-      user_ptr->id = atoi(value);
+      user_ptr->id = atol(value);
     } else if (strcmp(name, "distinction") == 0 && value != NULL) {
       strncpy(user_ptr->distinction, value, sizeof(user_ptr->distinction));
-    } else if (strcmp(name, "created_at") == 0) {
+    } else if (strcmp(name, "created_at") == 0 && value != NULL) {
       strncpy(user_ptr->created_at, value, sizeof(user_ptr->created_at));
-    } else if (strcmp(name, "updated_at") == 0) {
+    } else if (strcmp(name, "updated_at") == 0 && value != NULL) {
       strncpy(user_ptr->updated_at, value, sizeof(user_ptr->updated_at));
     }
   }

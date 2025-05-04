@@ -1,5 +1,5 @@
 //
-// Created by astri on 2025-04-09.
+// Created by astrid on 2025-04-09.
 //
 
 #include "./register.view.h"
@@ -116,7 +116,7 @@ Route render_register_view(UserRole user_role) {
                     if (user_role == INSTRUCTOR) {
                         nextRoute = ROUTE_INSTRUCTOR_DASHBOARD;
                     } else if (user_role == LEARNER) {
-                        nextRoute = ROUTE_LEARNER_DASHBOARD;
+                        nextRoute = ROUTE_LEARNER_COURSES;
                     } else {
                         nextRoute = ROUTE_EXIT;
                     }

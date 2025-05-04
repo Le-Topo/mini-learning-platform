@@ -1,11 +1,13 @@
+//
+// Created by astrid on 2025-04-.
+//
+
 #include <stdio.h>
 #include <mysql/mysql.h>
 #include "routes/routes.h"
 #include <stdbool.h>
 #include <curses.h>
 #include "utils/database/db-connection.h"
-// #include "lib/pdcurses/include/curses.h"
-// #include "lib/pdcurses/include/panel.h"
 #include "views/welcome/welcome.view.h"
 #include "views/auth/register/register.view.h"
 #include "views/auth/login/login.view.h"
@@ -31,7 +33,7 @@ int main(int argc, char *argv[]) {
 	int stackSize = 0, currentRouteIndex = 0;
 	bool canExit = false;
 
-	executionStack = add_route_to_execution_stack(executionStack, ROUTE_LEARNER_COURSES, &stackSize, &currentRouteIndex);
+	executionStack = add_route_to_execution_stack(executionStack, ROUTE_WELCOME, &stackSize, &currentRouteIndex);
 
 	/* Initialize curses */
 	initscr();

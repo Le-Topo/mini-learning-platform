@@ -1,7 +1,3 @@
-//
-// Created by astri on 2025-04-26.
-//
-
 #ifndef COURSE_CONTROLLER_H
 #define COURSE_CONTROLLER_H
 
