@@ -9,6 +9,7 @@
 - [Fonctionnalités réalisées](#fonctionnalités-réalisées)
 - [Tests et validation](#tests-et-validation)
 - [Comment exécuter le projet](#comment-exécuter-le-projet)
+- [Notes importantes](#notes-importantes)
 - [Conclusion](#conclusion)
 - [Références](#références)
 
@@ -339,10 +340,15 @@ Vous pouvez tester le programme en vous connectant avec les identifiants suivant
 
 Ou vous pouvez créer un nouvel utilisateur en vous inscrivant avec votre adresse email et votre mot de passe.
 
-### Note importante
-Les ordinateurs de l'école (connectés au réseau de l'école via Ethernet) ne permettent pas d'accéder à la base de données.
+## Notes importantes
+- Les ordinateurs de l'école (connectés au réseau de l'école via Ethernet) ne permettent pas d'accéder à la base de données.
 Il est alors impossible d'exécuter le projet sur ces ordinateurs. Il faut donc exécuter le projet sur un ordinateur personnel ou se connecter au réseau de l'école via WI-FI.  
-Il semble que les ordinateurs de l'école soient configurés pour ne pas permettre l'accès à certaines ressources externes, ce qui empêche l'accès à la base de données.
+Il semble que les ordinateurs de l'école soient configurés pour ne pas permettre l'accès à certaines ressources externes, ce qui empêche l'accès à la base de données.  
+
+- Il faut agrandir le terminal ou le passer en plein écran pour que l'application fonctionne correctement. Car, une partie de l'interface peut ne pas s'afficher si le terminal est trop petit.
+
+- L'application se sert de la touche `F11` pour retourner à une page précédente. Il faut donc s'assurer que
+cette touche n'est pas utilisée par votre terminal ou votre système d'exploitation. Car, c'est le cas de `vscode` par exemple, qui utilise cette touche pour passer en mode plein écran.
 
 ## Conclusion
 En conclusion, ce projet nous a permis de mettre en pratique les notions acquises durant le cours de résolution des

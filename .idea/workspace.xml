@@ -23,32 +23,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cd3fba9-a25e-4fae-bec1-32cfa57c547e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Rapport projet de session.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/authentication_flowchart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/mld.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/mvc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/report_cover.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/test1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/test2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/test3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/database/db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/guest/guest.controller.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/guest/guest.controller.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/curses/curses-utilities.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/curses/curses-utilities.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/database/db-orm.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/database/db-orm.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/session-handler/session-handler.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/session-handler/session-handler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/auth/register/register.view.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/auth/register/register.view.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/instructor/instructor.layout.c" beforeDir="false" afterPath="$PROJECT_DIR$/views/instructor/instructor.layout.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/instructor/instructor.layout.h" beforeDir="false" afterPath="$PROJECT_DIR$/views/instructor/instructor.layout.h" afterDir="false" />
-    </list>
+    <list default="true" id="9cd3fba9-a25e-4fae-bec1-32cfa57c547e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,6 +41,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -186,7 +163,7 @@
       <option name="presentableId" value="Default" />
       <updated>1745897737638</updated>
       <workItem from="1745897739668" duration="28284000" />
-      <workItem from="1746375846659" duration="17437000" />
+      <workItem from="1746375846659" duration="18715000" />
     </task>
     <servers />
   </component>
